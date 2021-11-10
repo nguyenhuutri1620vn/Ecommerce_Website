@@ -12,3 +12,130 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 10ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2467)
 
 
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7313065550660815995)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20211110090945)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7313065550660815995)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7313065550660815995)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20211110090945)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211110090945"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDetailsToUsers (20211110090959)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "full_name" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "phone" bigint[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "address" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "role" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211110090959"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20211110091008)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "status" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211110091008"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDiscounts (20211110091041)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "discounts" ("id" bigserial primary key, "name" character varying, "percent" decimal, "starts_at" timestamp, "ends_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211110091041"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20211110091101)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "category_id" bigint, "name" character varying, "price" decimal, "description" character varying, "image_path" character varying, "status" boolean, "quantity" integer, "discount_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211110091101"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrders (20211110091113)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "user_id" bigint, "quantity" integer, "total_price" decimal, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211110091113"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOrderDetails (20211110091126)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "order_details" ("id" bigserial primary key, "order_id" bigint, "product_id" bigint, "price" decimal, "quantity" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211110091126"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCarts (20211110091138)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "carts" ("id" bigserial primary key, "user_id" bigint, "product_id" bigint, "quantity" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20211110091138"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(7313065550660815995)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2021-11-10 16:16:34 +0700
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/daylight/.rvm/gems/ruby-3.0.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/daylight/.rvm/gems/ruby-3.0.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 5.9ms | Allocations: 413)
+Completed 200 OK in 14ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 3071)
+
+
+Started GET "/users/" for 127.0.0.1 at 2021-11-10 16:16:37 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users/sign_in" for 127.0.0.1 at 2021-11-10 16:16:42 +0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 623)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 30.5ms | Allocations: 8157)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/daylight/Desktop/Ecommerce_Website/public/packs
+[Webpacker] Hash: e2f281de3ea1fdc4fa5a
+Version: webpack 4.46.0
+Time: 3622ms
+Built at: 11/10/2021 4:16:48 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-be412d64645010827f4e.js    125 KiB  application  [emitted] [immutable]  application
+js/application-be412d64645010827f4e.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-be412d64645010827f4e.js js/application-be412d64645010827f4e.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 492 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 6194.6ms | Allocations: 18890)
+Completed 200 OK in 6220ms (Views: 6196.9ms | ActiveRecord: 5.5ms | Allocations: 27718)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-11-10 16:16:53 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 219)
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 153)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1856)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 4647)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 6025)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2021-11-10 16:17:01 +0700
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 105)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1060)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 3817)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.0ms | Allocations: 4428)
+
+
+Started GET "/" for 127.0.0.1 at 2021-11-10 16:17:07 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/daylight/.rvm/gems/ruby-3.0.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/daylight/.rvm/gems/ruby-3.0.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 4.3ms | Allocations: 218)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 986)
+
+

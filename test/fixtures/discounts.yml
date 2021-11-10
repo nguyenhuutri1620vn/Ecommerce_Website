@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  percent: 9.99
+  starts_at: 2021-11-10 16:10:41
+  ends_at: 2021-11-10 16:10:41
+
+two:
+  name: MyString
+  percent: 9.99
+  starts_at: 2021-11-10 16:10:41
+  ends_at: 2021-11-10 16:10:41
