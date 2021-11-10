@@ -1,0 +1,14 @@
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "ecommerce_website_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE DATABASE "ecommerce_website_test" ENCODING = 'unicode'[0m
+Started GET "/users/edit" for 127.0.0.1 at 2021-11-10 16:04:28 +0700
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/users/edit"):
+  
+Started GET "/" for 127.0.0.1 at 2021-11-10 16:04:31 +0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/daylight/.rvm/gems/ruby-3.0.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/daylight/.rvm/gems/ruby-3.0.0/gems/railties-6.1.4.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 4.0ms | Allocations: 223)
+Completed 200 OK in 10ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2467)
+
+
