@@ -139,3 +139,185 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 986)
 
 
+Started GET "/" for ::1 at 2021-11-15 12:34:51 +0700
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:17
+  Rendered categories/index.html.erb within layouts/application (Duration: 22.9ms | Allocations: 4950)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 0.6ms | Allocations: 144)
+  Rendered layouts/_slidebar.html.erb (Duration: 0.9ms | Allocations: 170)
+  Rendered layouts/_footer.html.erb (Duration: 1.6ms | Allocations: 120)
+  Rendered layout layouts/application.html.erb (Duration: 156.4ms | Allocations: 35228)
+Completed 200 OK in 252ms (Views: 158.1ms | ActiveRecord: 8.2ms | Allocations: 40304)
+
+
+Started GET "/categories/new" for ::1 at 2021-11-15 12:34:56 +0700
+Processing by CategoriesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/new.html.erb within layouts/application
+  Rendered categories/_form.html.erb (Duration: 100.4ms | Allocations: 6629)
+  Rendered categories/new.html.erb within layouts/application (Duration: 104.1ms | Allocations: 6947)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 0.2ms | Allocations: 38)
+  Rendered layouts/_slidebar.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered layout layouts/application.html.erb (Duration: 116.0ms | Allocations: 10919)
+Completed 200 OK in 120ms (Views: 117.2ms | ActiveRecord: 0.0ms | Allocations: 11551)
+
+
+Started POST "/categories" for ::1 at 2021-11-15 12:35:04 +0700
+Processing by CategoriesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "category"=>{"name"=>"Phụ kiện", "status"=>"1"}, "commit"=>"Thêm"}
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/categories_controller.rb:10:in `create'
+  [1m[36mCategory Create (69.6ms)[0m  [1m[32mINSERT INTO "categories" ("name", "status", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Phụ kiện"], ["status", true], ["created_at", "2021-11-15 05:35:04.582944"], ["updated_at", "2021-11-15 05:35:04.582944"]]
+  ↳ app/controllers/categories_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (60.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/categories_controller.rb:10:in `create'
+Redirected to http://localhost:3000/categories
+Completed 302 Found in 150ms (ActiveRecord: 132.3ms | Allocations: 3424)
+
+
+Started GET "/categories" for ::1 at 2021-11-15 12:35:04 +0700
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:17
+  Rendered categories/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1327)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered layouts/_slidebar.html.erb (Duration: 0.2ms | Allocations: 39)
+  Rendered layouts/_footer.html.erb (Duration: 0.2ms | Allocations: 38)
+  Rendered layout layouts/application.html.erb (Duration: 15.3ms | Allocations: 5286)
+Completed 200 OK in 18ms (Views: 14.6ms | ActiveRecord: 1.7ms | Allocations: 5743)
+
+
+Started GET "/categories/18/edit" for ::1 at 2021-11-15 12:35:07 +0700
+Processing by CategoriesController#edit as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:18:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/edit.html.erb within layouts/application
+  Rendered categories/_form.html.erb (Duration: 1.8ms | Allocations: 706)
+  Rendered categories/edit.html.erb within layouts/application (Duration: 2.5ms | Allocations: 889)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 0.2ms | Allocations: 38)
+  Rendered layouts/_slidebar.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 4833)
+Completed 200 OK in 33ms (Views: 10.8ms | ActiveRecord: 2.3ms | Allocations: 7102)
+
+
+Started PATCH "/categories/18" for ::1 at 2021-11-15 12:35:09 +0700
+Processing by CategoriesController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "category"=>{"name"=>"Phụ kiện", "status"=>"0"}, "commit"=>"Thêm", "id"=>"18"}
+  [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:22:in `update'
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/categories_controller.rb:24:in `update'
+  [1m[36mCategory Update (2.8ms)[0m  [1m[33mUPDATE "categories" SET "status" = $1, "updated_at" = $2 WHERE "categories"."id" = $3[0m  [["status", false], ["updated_at", "2021-11-15 05:35:09.739104"], ["id", 18]]
+  ↳ app/controllers/categories_controller.rb:24:in `update'
+  [1m[36mTRANSACTION (27.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/categories_controller.rb:24:in `update'
+Redirected to http://localhost:3000/categories
+Completed 302 Found in 52ms (ActiveRecord: 35.0ms | Allocations: 3412)
+
+
+Started GET "/categories" for ::1 at 2021-11-15 12:35:09 +0700
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:17
+  Rendered categories/index.html.erb within layouts/application (Duration: 7.6ms | Allocations: 1327)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 0.8ms | Allocations: 39)
+  Rendered layouts/_slidebar.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered layout layouts/application.html.erb (Duration: 19.9ms | Allocations: 5286)
+Completed 200 OK in 22ms (Views: 19.2ms | ActiveRecord: 1.7ms | Allocations: 5744)
+
+
+Started GET "/categories/18/edit" for ::1 at 2021-11-15 12:35:11 +0700
+Processing by CategoriesController#edit as HTML
+  Parameters: {"id"=>"18"}
+  [1m[36mCategory Load (2.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:18:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering categories/edit.html.erb within layouts/application
+  Rendered categories/_form.html.erb (Duration: 2.8ms | Allocations: 685)
+  Rendered categories/edit.html.erb within layouts/application (Duration: 3.5ms | Allocations: 777)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered layouts/_slidebar.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 4724)
+Completed 200 OK in 23ms (Views: 14.0ms | ActiveRecord: 2.6ms | Allocations: 5868)
+
+
+Started PATCH "/categories/18" for ::1 at 2021-11-15 12:35:13 +0700
+Processing by CategoriesController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "category"=>{"name"=>"Phụ kiện", "status"=>"1"}, "commit"=>"Thêm", "id"=>"18"}
+  [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:22:in `update'
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/categories_controller.rb:24:in `update'
+  [1m[36mCategory Update (2.1ms)[0m  [1m[33mUPDATE "categories" SET "status" = $1, "updated_at" = $2 WHERE "categories"."id" = $3[0m  [["status", true], ["updated_at", "2021-11-15 05:35:13.143690"], ["id", 18]]
+  ↳ app/controllers/categories_controller.rb:24:in `update'
+  [1m[36mTRANSACTION (258.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/categories_controller.rb:24:in `update'
+Redirected to http://localhost:3000/categories
+Completed 302 Found in 284ms (ActiveRecord: 264.4ms | Allocations: 3242)
+
+
+Started GET "/categories" for ::1 at 2021-11-15 12:35:13 +0700
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:17
+  Rendered categories/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1326)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 0.1ms | Allocations: 39)
+  Rendered layouts/_slidebar.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered layout layouts/application.html.erb (Duration: 28.2ms | Allocations: 5283)
+Completed 200 OK in 31ms (Views: 28.1ms | ActiveRecord: 1.2ms | Allocations: 5740)
+
+
+Started DELETE "/categories/17" for ::1 at 2021-11-15 12:35:16 +0700
+Processing by CategoriesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"17"}
+  [1m[36mCategory Load (2.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/categories_controller.rb:32:in `destroy'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/categories_controller.rb:33:in `destroy'
+  [1m[36mCategory Destroy (1.8ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 17]]
+  ↳ app/controllers/categories_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (24.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/categories_controller.rb:33:in `destroy'
+Redirected to http://localhost:3000/categories
+Completed 302 Found in 46ms (ActiveRecord: 31.0ms | Allocations: 2802)
+
+
+Started GET "/categories" for ::1 at 2021-11-15 12:35:16 +0700
+Processing by CategoriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/index.html.erb within layouts/application
+  [1m[36mCategory Load (2.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  ↳ app/views/categories/index.html.erb:17
+  Rendered categories/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 1261)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 0.1ms | Allocations: 39)
+  Rendered layouts/_slidebar.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered layouts/_footer.html.erb (Duration: 0.1ms | Allocations: 38)
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 5228)
+Completed 200 OK in 19ms (Views: 15.2ms | ActiveRecord: 2.2ms | Allocations: 5684)
+
+
