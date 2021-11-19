@@ -20,7 +20,6 @@ class CategoriesController < ApplicationController
 
   def update
     @categories = Category.find(params[:id])
-
     if @categories.update(categories_params)
       redirect_to '/categories'
     else
