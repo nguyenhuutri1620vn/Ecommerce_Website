@@ -1,0 +1,39 @@
+<style>
+    table, th, td {
+        border:1px solid black;
+    }
+</style>
+
+<h2>Shopping cart</h2>
+
+<table style="width:100%">
+  <tr>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total</th>
+    <th>Remove</th>
+  </tr>
+  <% @carts.each do |cart| %>
+    <% product = Product.find(cart.product_id) %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.price.to_i %></td>
+      <td>
+        <% form1 = "increase_".concat(cart.id.to_s) %>
+        <% form2 = "decrease_".concat(cart.id.to_s) %>
+        <%= form_with model: cart, id: form1 do |form| %>
+          <%= form.hidden_field :quantity, value: cart.quantity + 1 %>
+        <% end %>
+        <%= form_with model: cart, id: form2 do |form| %>
+          <%= form.hidden_field :quantity, value: cart.quantity - 1 %>
+        <% end %>
+        <button type="submit" form="<%=form2%>" value="Submit"> - </button>
+        <%= cart.quantity %>
+        <button type="submit" form="<%=form1%>" value="Submit"> + </button>
+      </td>
+      <td><%= (cart.quantity * product.price).to_i %></td>
+      <td><%= link_to 'Remove', cart, method: :delete, data: { confirm: 'Xoa san pham ' + product.name } %></td>
+    </tr>
+  <%end %>
+</table>

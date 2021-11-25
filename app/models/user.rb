@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :carts
   has_many :orders
+  attribute :admin, :boolean, default: false
 end
