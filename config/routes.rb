@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
   root "categories#index"
   devise_for :users
   resources :categories
