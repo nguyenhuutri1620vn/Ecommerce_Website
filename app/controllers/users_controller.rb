@@ -1,17 +1,22 @@
 class UsersController < ApplicationController
     before_action :set_find_id, only: %i[show edit update destroy changepassword updatepassword]
 
+    #show admin list
     def index
-      @users = User.where('role' , 1)
+      @users = User.where('role = true')
     end
-
+    #show customer list
+    def list_customer
+      @customers = User.where('role = false')
+    end
+    #show detail user
     def show
     end
-
+    #create new admin
     def new
         @user = User.new
     end
-
+    
     def create
       @user = User.new(user_params)   
       @user.role = true
@@ -22,6 +27,7 @@ class UsersController < ApplicationController
       end
     end
 
+    #update admin
     def edit
     end
 
@@ -33,6 +39,7 @@ class UsersController < ApplicationController
       end
     end
 
+    #change password admin
     def changepassword
     end
 
@@ -44,11 +51,12 @@ class UsersController < ApplicationController
       end
     end
   
+    #destroy user
     def destroy
       @user.destroy
-  
       redirect_to users_path
     end
+
 
     private
     def user_params

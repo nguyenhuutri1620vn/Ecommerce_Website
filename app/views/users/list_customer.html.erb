@@ -1,0 +1,31 @@
+<div class='mx-4'>
+    <h4>DANH SÁCH KHÁCH HÀNG
+    </h4>
+    <div class="card mt-2">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Họ và tên</th>
+                        <th scope="col">Số điện thoại</th>
+                        <th class="text-center">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @customers.each do |customer| %>
+                            <tr>
+                                <td><%= customer.id%></td>
+                                <td><%= link_to customer.email, user_path(customer.id) %></td>
+                                <td><%= customer.full_name %></td>
+                                <td><%= customer.phone%></td>
+                                <td class="text-center"> <%= link_to "Xoá", user_path(customer.id), method: :delete,
+                                        data: { confirm: "Xác nhận xoá thể loại ?" } , class: 'btn btn-secondary'%></td>
+                            </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

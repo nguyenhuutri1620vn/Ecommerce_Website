@@ -1,5 +1,4 @@
-<%= link_to "< Danh sách nhân viên", users_path, class: 'btn btn-secondary mb-2' %>
-<%= link_to "Đổi mật khẩu", "/admin/users/#{@user.id}/change-password", class: 'btn btn-brand float-right'%>
+<%= link_to "< Danh sách nhân viên", url_for(:back) , class: 'btn btn-secondary mb-2' %>
 <div class='card'>
     <div class='card-header'>Thông tin của <b><%= @user.full_name %></b></div>
     <div class='card-body'>
