@@ -1,0 +1,32 @@
+<div class='mx-4'>
+    <h4>DANH SÁCH QUẢN TRỊ VIÊN
+    </h4>
+    <div class="card mt-2">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Họ và tên</th>
+                        <th scope="col">Số điện thoại</th>
+                        <th colspan="2" class="text-center">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @users.each do |user| %>
+                            <tr>
+                                <td><%= user.id%></td>
+                                <td><%= link_to user.email, user_path(user.id) %></td>
+                                <td><%= user.full_name %></td>
+                                <td><%= user.phone%></td>
+                                <td class="text-center"><%= link_to 'Cập nhật',  edit_user_path(user.id), class: 'btn btn-brand'%></td>
+                                <td class="text-center"> <%= link_to "Xoá", user_path(user.id), method: :delete,
+                                        data: { confirm: "Xác nhận xoá thể loại ?" } , class: 'btn btn-secondary'%></td>
+                            </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -19,8 +19,8 @@
                         <td><%= categories.id%></td>
                         <td><%= categories.name %></td>
                         <td><%= categories.status === true ? 'Hiện': 'Ẩn'%></td>
-                        <td class="text-center"><%= link_to "Sửa",  "/categories/#{categories.id}/edit", class: 'btn btn-brand'%></td>
-                        <td class="text-center"> <%= link_to "Xoá", "/categories/#{categories.id}", method: :delete,
+                        <td class="text-center"><%= link_to "Sửa",  edit_category_path(categories.id), class: 'btn btn-brand'%></td>
+                        <td class="text-center"> <%= link_to "Xoá", category_path(categories.id), method: :delete,
                                 data: { confirm: "Xác nhận xoá thể loại ?" } , class: 'btn btn-secondary'%></td>
                     </tr>
                     <% end %>
