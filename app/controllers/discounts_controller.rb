@@ -10,7 +10,6 @@ class DiscountsController < ApplicationController
     def create
         @discount = Discount.new(discounts_params)
         if @discount.save
-          flash[:success] = "Discount successfully created"
           redirect_to discounts_path
         else
           render :new
@@ -24,7 +23,6 @@ class DiscountsController < ApplicationController
     def update
         @discount = Discount.find(params[:id])
         if @discount.update(discounts_params)
-          flash[:success] = "Discount was successfully updated"
           redirect_to discounts_path
         else
           render :edit

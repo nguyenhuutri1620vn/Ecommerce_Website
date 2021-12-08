@@ -56105,3 +56105,124 @@ Processing by DiscountsController#index as HTML
 Completed 200 OK in 79ms (Views: 46.3ms | ActiveRecord: 10.3ms | Allocations: 5344)
 
 
+Started GET "/" for ::1 at 2021-12-08 23:40:18 +0700
+Processing by FrontendController#index as HTML
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  ↳ app/helpers/authentication_helper.rb:12:in `current_user'
+  Rendering layout layouts/frontend.html.erb
+  Rendering frontend/index.html.erb within layouts/frontend
+  Rendered frontend/index.html.erb within layouts/frontend (Duration: 35.2ms | Allocations: 1227)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/frontend/_navbar.html.erb (Duration: 67.9ms | Allocations: 233)
+  Rendered layouts/frontend/_footer.html.erb (Duration: 28.8ms | Allocations: 121)
+  Rendered layout layouts/frontend.html.erb (Duration: 201.3ms | Allocations: 4734)
+Completed 200 OK in 326ms (Views: 206.7ms | ActiveRecord: 54.7ms | Allocations: 9683)
+
+
+Started GET "/login" for ::1 at 2021-12-08 23:40:21 +0700
+Processing by AuthenticationController#new as HTML
+  Rendering layout layouts/frontend.html.erb
+  Rendering authentication/new.html.erb within layouts/frontend
+  Rendered authentication/new.html.erb within layouts/frontend (Duration: 185.5ms | Allocations: 1226)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/frontend/_navbar.html.erb (Duration: 1.9ms | Allocations: 110)
+  Rendered layouts/frontend/_footer.html.erb (Duration: 0.4ms | Allocations: 40)
+  Rendered layout layouts/frontend.html.erb (Duration: 203.0ms | Allocations: 4143)
+Completed 200 OK in 207ms (Views: 205.0ms | ActiveRecord: 0.0ms | Allocations: 4938)
+
+
+Started GET "/login" for ::1 at 2021-12-08 23:40:37 +0700
+Processing by AuthenticationController#new as HTML
+  Rendering layout layouts/frontend.html.erb
+  Rendering authentication/new.html.erb within layouts/frontend
+  Rendered authentication/new.html.erb within layouts/frontend (Duration: 1.8ms | Allocations: 821)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/frontend/_navbar.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered layouts/frontend/_footer.html.erb (Duration: 0.1ms | Allocations: 40)
+  Rendered layout layouts/frontend.html.erb (Duration: 5.9ms | Allocations: 3735)
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 4401)
+
+
+Started GET "/register" for ::1 at 2021-12-08 23:40:39 +0700
+Processing by FrontendController#new as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  ↳ app/helpers/authentication_helper.rb:12:in `current_user'
+  Rendering layout layouts/frontend.html.erb
+  Rendering frontend/new.html.erb within layouts/frontend
+  Rendered frontend/new.html.erb within layouts/frontend (Duration: 45.8ms | Allocations: 4203)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/frontend/_navbar.html.erb (Duration: 0.3ms | Allocations: 110)
+  Rendered layouts/frontend/_footer.html.erb (Duration: 0.1ms | Allocations: 40)
+  Rendered layout layouts/frontend.html.erb (Duration: 53.6ms | Allocations: 7018)
+Completed 200 OK in 87ms (Views: 54.7ms | ActiveRecord: 10.5ms | Allocations: 16692)
+
+
+Started GET "/login" for ::1 at 2021-12-08 23:40:40 +0700
+Processing by AuthenticationController#new as HTML
+  Rendering layout layouts/frontend.html.erb
+  Rendering authentication/new.html.erb within layouts/frontend
+  Rendered authentication/new.html.erb within layouts/frontend (Duration: 2.2ms | Allocations: 758)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/frontend/_navbar.html.erb (Duration: 0.5ms | Allocations: 94)
+  Rendered layouts/frontend/_footer.html.erb (Duration: 0.2ms | Allocations: 40)
+  Rendered layout layouts/frontend.html.erb (Duration: 10.0ms | Allocations: 3628)
+Completed 200 OK in 15ms (Views: 11.1ms | ActiveRecord: 0.0ms | Allocations: 4064)
+
+
+Started GET "/register" for ::1 at 2021-12-08 23:40:41 +0700
+Processing by FrontendController#new as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  ↳ app/helpers/authentication_helper.rb:12:in `current_user'
+  Rendering layout layouts/frontend.html.erb
+  Rendering frontend/new.html.erb within layouts/frontend
+  Rendered frontend/new.html.erb within layouts/frontend (Duration: 3.1ms | Allocations: 3451)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/frontend/_navbar.html.erb (Duration: 0.3ms | Allocations: 94)
+  Rendered layouts/frontend/_footer.html.erb (Duration: 0.2ms | Allocations: 40)
+  Rendered layout layouts/frontend.html.erb (Duration: 9.1ms | Allocations: 6221)
+Completed 200 OK in 18ms (Views: 9.8ms | ActiveRecord: 1.5ms | Allocations: 7416)
+
+
+Started GET "/login" for ::1 at 2021-12-08 23:40:42 +0700
+Processing by AuthenticationController#new as HTML
+  Rendering layout layouts/frontend.html.erb
+  Rendering authentication/new.html.erb within layouts/frontend
+  Rendered authentication/new.html.erb within layouts/frontend (Duration: 3.3ms | Allocations: 758)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/frontend/_navbar.html.erb (Duration: 0.3ms | Allocations: 94)
+  Rendered layouts/frontend/_footer.html.erb (Duration: 0.1ms | Allocations: 40)
+  Rendered layout layouts/frontend.html.erb (Duration: 8.4ms | Allocations: 3628)
+Completed 200 OK in 12ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 4063)
+
+
+Started POST "/login" for ::1 at 2021-12-08 23:40:43 +0700
+Processing by AuthenticationController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "session"=>{"email"=>"", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", ""], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:10:in `create'
+  Rendering layout layouts/frontend.html.erb
+  Rendering authentication/new.html.erb within layouts/frontend
+  Rendered authentication/new.html.erb within layouts/frontend (Duration: 2.5ms | Allocations: 741)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/frontend/_navbar.html.erb (Duration: 1.1ms | Allocations: 90)
+  Rendered layouts/frontend/_footer.html.erb (Duration: 0.2ms | Allocations: 40)
+  Rendered layout layouts/frontend.html.erb (Duration: 9.8ms | Allocations: 3610)
+Completed 200 OK in 19ms (Views: 10.7ms | ActiveRecord: 1.1ms | Allocations: 4903)
+
+
+Started GET "/logout" for ::1 at 2021-12-08 23:40:44 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/logout"):
+  
+Started GET "/login" for ::1 at 2021-12-08 23:40:48 +0700
+Processing by AuthenticationController#new as HTML
+  Rendering layout layouts/frontend.html.erb
+  Rendering authentication/new.html.erb within layouts/frontend
+  Rendered authentication/new.html.erb within layouts/frontend (Duration: 3.7ms | Allocations: 766)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/frontend/_navbar.html.erb (Duration: 0.3ms | Allocations: 94)
+  Rendered layouts/frontend/_footer.html.erb (Duration: 0.1ms | Allocations: 40)
+  Rendered layout layouts/frontend.html.erb (Duration: 9.9ms | Allocations: 3640)
+Completed 200 OK in 14ms (Views: 11.0ms | ActiveRecord: 0.0ms | Allocations: 4082)
+
+
