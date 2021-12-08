@@ -27,7 +27,7 @@
 
         <div class="form-group">
           <%= form.label :'Mô tả' %>
-          <%= form.text_field :description , class: "form-control"%>
+          <%= form.text_field :description, class: "form-control"%>
           <% @product.errors.messages_for(:description).each do |message| %>
             <div class='text-danger'><%= message %></div>
           <% end %>

@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 2021_12_08_022851) do
     t.string "name"
     t.decimal "price"
     t.string "description"
-    t.string "image_path"
     t.boolean "status"
     t.integer "quantity"
     t.bigint "discount_id"
