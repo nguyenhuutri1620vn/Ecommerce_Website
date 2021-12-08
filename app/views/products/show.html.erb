@@ -1,0 +1,12 @@
+<%= link_to "Danh sách", products_path, class: 'btn btn-secondary'%>
+<h4>Chi tiết sản phẩm <%= @product.name %></h4>
+
+<p>Số lượng: <%= @product.quantity %></p>
+<p>Giá: <%= @product.price %></p>
+<p>Mô tả: <%= @product.description %></p>
+<p>Hình ảnh: </p>
+<% if @product.image.attached? %>
+    <div class='image-product my-2'> 
+        <%= image_tag(@product.image, style: 'width:100%')%>
+    </div> 
+<% end %>

@@ -11,13 +11,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'style', media: 'all', 'data-turbolinks-track': 'reload' %>
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
       <div class="dashboard-main-wrapper">
-        <%= render "layouts/navbar" %>
-        <%= render "layouts/slidebar" %>
+        <%= render "layouts/admin/navbar" %>
+        <%= render "layouts/admin/slidebar" %>
         <div class='dashboard-wrapper'>
           <div class="dashboard-ecommerce">
               <div class="container-fluid dashboard-content ">
@@ -25,7 +24,7 @@
               </div>
             </div>
         </div>
-        <%= render "layouts/footer" %>
+        <%= render "layouts/admin/footer" %>
         </div>
   </body>
 </html>
