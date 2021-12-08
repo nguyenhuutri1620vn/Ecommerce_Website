@@ -1,0 +1,61 @@
+<div class='row mt-4'>
+    <div class= 'col-8 '>
+        <div class="justify-content-center align-items-center">
+            <%= image_tag("img-register.png", :alt => "Image", :class => "d-block w-100 img-res") %>
+        </div>
+    </div>
+    <div class= 'col'>
+       <%= form_with url: '/register' do |form| %>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-1">Trang đăng ký</h3>
+                    <p>Vui lòng nhập đầy đủ thông tin.</p>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <%= form.text_field :email , autofocus: true, class: "form-control form-control-lg", placeholder: 'Nhập email..'%>
+                        <% @user.errors.messages_for(:email).each do |message| %>
+                            <div class='text-danger'><%= message %></div>
+                        <% end %>
+                    </div>
+                    <div class="form-group">
+                        <%= form.password_field :password , class: "form-control", placeholder: 'Nhập mật khẩu..', autocomplete: "new-password"%>
+                        <% @user.errors.messages_for(:password).each do |message| %>
+                            <div class='text-danger'><%= message %></div>
+                        <% end %>
+                    </div>
+                    <div class="form-group">
+                        <%= form.password_field :password_confirmation , class: "form-control", placeholder: 'Nhập lại mật khẩu..', autocomplete: "new-password" %>
+                        <% @user.errors.messages_for(:password_confirmation).each do |message| %>
+                            <div class='text-danger'><%= message %></div>
+                        <% end %>
+                    </div>
+                    <div class="form-group">
+                        <%= form.text_field :full_name , class: "form-control", placeholder: 'Nhập họ và tên..'%>
+                         <% @user.errors.messages_for(:full_name).each do |message| %>
+                            <div class='text-danger'><%= message %></div>
+                        <% end %>
+                    </div>
+                    <div class="form-group">
+                        <%= form.text_field :phone , class: "form-control", placeholder: 'Nhập số điện thoại..'%>
+                        <% @user.errors.messages_for(:phone).each do |message| %>
+                            <div class='text-danger'><%= message %></div>
+                        <% end %>
+                    </div>
+                    <div class="form-group">
+                        <%= form.text_field :address , class: "form-control", placeholder: 'Nhập địa chỉ..'%>
+                        <% @user.errors.messages_for(:address).each do |message| %>
+                            <div class='text-danger'><%= message %></div>
+                        <% end %>
+                    </div>
+                    <div class="form-group pt-2">
+                        <button class="btn btn-block btn-primary" type="text" type="submit">Đăng ký</button>
+                    </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <p>Bạn đã có tài khoản? Đăng nhập tại <a href="/login" class="text-secondary">đây</a></p>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

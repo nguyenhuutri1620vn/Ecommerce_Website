@@ -1,0 +1,35 @@
+<div class='row mt-4'>
+    <div class= 'col-8 '>
+        <div class="justify-content-center align-items-center">
+            <%= image_tag("img-login.png", :alt => "Image", :class => "d-block w-100 img-log") %>
+        </div>
+    </div>
+    <div class= 'col'>
+       <%= form_for :session, url: '/login' do |form| %>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="mb-1">Trang đăng nhập</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <%= form.text_field :email , autofocus: true, class: "form-control form-control-lg", placeholder: 'Nhập email..'%>
+                    </div>
+                    <div class="form-group">
+                        <%= form.password_field :password , class: "form-control", placeholder: 'Nhập mật khẩu..'%>
+                    </div>
+                    <% flash.each do |type, msg| %>                                                                                                                                                                                                                                                                                                                 
+                        <div class='text-danger'>
+                            <%= msg %>
+                        </div>
+                    <% end %>
+                    <div class="form-group pt-2">
+                        <button class="btn btn-block btn-primary" type="text" type="submit">Đăng nhập</button>
+                    </div>
+                </div>
+                <div class="card-footer bg-white">
+                    <p>Bạn chưa có tài khoản? Đăng ký tại <a href="/register" class="text-secondary">đây</a></p>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
