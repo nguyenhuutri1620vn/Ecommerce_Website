@@ -1,0 +1,17 @@
+current directory: /home/tandn/Ecommerce_Website/vendor/bundle/ruby/3.0.0/gems/racc-1.6.0/ext/racc/cparse
+/usr/share/rvm/rubies/ruby-3.0.0/bin/ruby -I /usr/share/rvm/rubies/ruby-3.0.0/lib/ruby/3.0.0 -r ./siteconf20211202-16835-9fxaok.rb extconf.rb
+checking for rb_block_call()... yes
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /home/tandn/Ecommerce_Website/vendor/bundle/ruby/3.0.0/gems/racc-1.6.0/ext/racc/cparse
+make "DESTDIR=" clean
+
+current directory: /home/tandn/Ecommerce_Website/vendor/bundle/ruby/3.0.0/gems/racc-1.6.0/ext/racc/cparse
+make "DESTDIR="
+compiling cparse.c
+linking shared-object racc/cparse.so
+
+current directory: /home/tandn/Ecommerce_Website/vendor/bundle/ruby/3.0.0/gems/racc-1.6.0/ext/racc/cparse
+make "DESTDIR=" install
+/usr/bin/install -m 0755 cparse.so ./.gem.20211202-16835-vtaq7b/racc
