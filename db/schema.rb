@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2021_12_08_022851) do
     t.bigint "category_id"
     t.string "name"
     t.decimal "price"
+    t.decimal "sell_price"
     t.string "description"
     t.boolean "status"
     t.integer "quantity"

@@ -1,7 +1,9 @@
-<h4>Chi tiết sản phẩm <%= @product.name %></h4>
-
+<%= link_to "Danh sách sản phẩm", products_path, class: 'btn btn-secondary float-end' %>
+<h4>Chi tiết sản phẩm <%= @product.name %>
+</h4>
 <p>Số lượng: <%= @product.quantity %></p>
 <p>Giá: <%= @product.price %></p>
+<p>Giá: <%= @product.sell_price %></p>
 <p>Mô tả: <%= @product.description %></p>
 <p>Hình ảnh: </p>
 <% if @product.image.attached? %>
