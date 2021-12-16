@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
     def index
         @products = Product.all
-        @q = Product.ransack(params[:q],)
+        @q = Product.ransack(params[:q])
         @products = @q.result.paginate(page: params[:page], per_page: 10).order('created_at DESC')
     end
 
@@ -18,8 +18,8 @@ class ProductsController < ApplicationController
     
     def create
         @product = Product.new(products_params)
-        @product.sell_price = @product.price * (100 - (@product.discount.percent / 100)) 
         if @product.save
+          @product.sell_price = @product.price * (100 - (@product.discount.percent / 100)) 
           redirect_to products_path
         else
           render :new

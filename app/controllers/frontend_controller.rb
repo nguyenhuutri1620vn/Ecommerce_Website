@@ -1,5 +1,8 @@
 class FrontendController < ApplicationController
   def index
+    @products = Product.where('status = true')
+    @q = Product.ransack(params[:q])
+    @products = @q.result.paginate(page: params[:page], per_page: 20).order('created_at DESC')
   end
 
   def show

@@ -1,16 +1,6 @@
 <div class="dashboard-header">
     <nav class="navbar navbar-expand-lg bg-white fixed-top">
         <a class="navbar-brand" href="/">Ecommerce</a>
-        <%= form_for( '' ) do |f|%>
-            <div class='form-group mt-3'>
-                <div class="input-group mb-3">
-                    <%= text_field (:search), 'search', class: 'form-control form-control-sm'%>
-                    <button class='btn btn-primary btn-sm'>
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        <% end %>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto navbar-right-top mr-2">
                 <% if @current_user.nil? %>
