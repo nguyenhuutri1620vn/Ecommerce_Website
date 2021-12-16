@@ -1,12 +1,21 @@
 <div class='mx-4'>
     <h4>DANH SÁCH SẢN PHẨM
+      <div class='float-right'>
+            <%= search_form_for @q do |f| %>
+                <%= f.label :'Tên sản phẩm' %>
+                <%= f.search_field :name_cont%>
+                <%= f.submit:'Tìm', :class => 'btn btn-primary'%>
+            <% end %>
+        </div>
     </h4>
+  
     <div class="card mt-2">
         <div class="card-body">
             <table class="table table-hove0r">
                 <thead>
                     <tr>
-                        <th scope="col">STT</th>
+                        <th scope="col">Mã SP</th>
+                        <th scope="col">Loại sản phẩm</th>
                         <th scope="col">Tên</th>
                         <th scope='col'>Số lượng</th>
                         <th scope='col'>Giá</th>
@@ -18,6 +27,7 @@
                     <% @products.each do |product| %>
                     <tr>
                         <td><%= product.id%></td>
+                        <td><%= product.category.name%></td>
                         <td><%= link_to product.name, product_path(product.id) %></td>
                         <td><%= product.quantity %></td>
                         <td><%= product.price %></td>
@@ -29,6 +39,9 @@
                     <% end %>
                 </tbody>
             </table>
+            <div class="digg_pagination float-right mt-3">
+                <%= will_paginate @products  %>
+            </div>
         </div>
     </div>
 </div>

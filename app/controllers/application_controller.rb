@@ -4,10 +4,11 @@ class ApplicationController < ActionController::Base
   include AuthenticationHelper
 
   before_action :require_login
-
   def require_login
     unless logged_in?
       redirect_to login_path
+    else
+
     end
   end
 end

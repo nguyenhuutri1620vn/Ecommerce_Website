@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/test/:id', to: 'frontend#show'
 
   #logout
-  delete  "logout" ,to: "authentication#destroy"
+  get  "logout" ,to: "authentication#destroy"
 
   scope '/admin' do
     get '/customers', to: 'users#list_customer'
