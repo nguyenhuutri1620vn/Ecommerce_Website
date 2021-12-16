@@ -3,11 +3,11 @@ class UsersController < ApplicationController
 
     #show admin list
     def index
-      @users = User.where('role = true')
+      @users = User.where('admin = true')
     end
     #show customer list
     def list_customer
-      @customers = User.where('role = false')
+      @customers = User.where('admin = false')
     end
     #show detail user
     def show
