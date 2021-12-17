@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # devise_for :users
   root "frontend#index"
   resources :authentications, only: [:new, :create, :destroy]
-  resources :frontend, only: [:new, :create, :index]
+  resources :frontend, only: [:new, :create, :index, :show]
 
   #register
   get '/register', to: 'frontend#new'
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # #login
   get '/login', to: 'authentication#new', as: 'login'
   post 'login', to: 'authentication#create'
-  get '/test/:id', to: 'frontend#show'
+  get '/product/:id/detail', to: 'frontend#show'
 
   #logout
   get  "logout" ,to: "authentication#destroy"

@@ -1,10 +1,20 @@
-<div class="container">
+<div class="container pt-2">
+  <h2> <%= @product.name %></h2>
   <div class="row">
     <div class="col-lg-offset-3 col-lg-6">
-      <div class="text-left">
-        <h1><%= @user.email %></h1>
-      </div>
-      <%= link_to "Logout", logout_path, method: :delete %> 
+       <%= image_tag(@product.image, style: 'width:100%')%>
+    </div>
+    <div class='col'>
+      <h3>Số lượng: <%= @product.quantity %></h3>
+      <% unless @product.sell_price.nil?%>
+        <h3 class='lineThrough'>Giá: <%= @product.price %></h3>
+        <h3 class='text-danger'>Giá đã giảm: <%= @product.sell_price %></h3>
+      <% else %>
+        <h3 class='text-danger'>Giá: <%= @product.price %></h3>
+      <% end %>
+      <h3>Mô tả:</h3>
+      <h4><%= @product.description %></h4>
+      <button class='btn btn-success cart-button btn-block'><i class="fa fa-shopping-cart"></i> <b>Thêm vào giỏ hàng</b></button>
     </div>
   </div>
 </div>

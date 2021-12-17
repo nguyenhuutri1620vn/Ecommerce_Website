@@ -10,7 +10,7 @@ class AuthenticationController < ApplicationController
         user = User.find_by email: params[:session][:email]
         if user && user.authenticate(params[:session][:password])
             log_in user
-            redirect_to "/test/#{user.id}"
+            redirect_to frontend_index_path
         else
             flash[:danger] = "Tài khoản hoặc mật khẩu không đúng"
             render :new

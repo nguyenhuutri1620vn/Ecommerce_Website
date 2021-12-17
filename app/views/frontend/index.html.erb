@@ -17,38 +17,44 @@
 </div>
 <div class='product mt-2'>
     <div class="container">
-    <h2>
+    <h2 >
         SẢN PHẨM
          <div class='float-right'>
             <%= search_form_for @q , url: frontend_index_path do |f| %>
                 <%= f.label :'Tên sản phẩm' %>
                 <%= f.search_field :name_cont%>
-                <%= f.submit:'Tìm', :class => 'btn btn-primary'%>
+                <%= f.submit:'Tìm', :class => 'btn btn-primary btn-sm'%>
             <% end %>
         </div>  
     </h2>
         <div class="row g-1">
-            <% @products.each do |product| %>
-                <div class="col-md-3">
-                    <div class="card p-3 card-product">
-                        <div class="text-center"> <%= image_tag product.image, alt: 'Image', class:'product-image'%></div>
-                        <% unless product.sell_price.nil?%>
-                            <div class="product-details"> <span class="font-weight-bold d-block lineThrough"><%= product.price %> VND</span>
-                            <span class="font-weight-bold d-block text-danger"><%= product.sell_price %> VND</span>
-                        <% else %>
-                          <div class="product-details"> <span class="font-weight-bold d-block"><%= product.price %> VND</span>
-                        <% end %>
-                        <span><%= product.name %></span>
-                            <div class="buttons d-flex flex-row">
-                                <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart </button>
+            <% if @products.length == 0 %>
+                <h4>Không tìm thấy sản phẩm</h4>
+            <% else %>
+                <% @products.each do |product| %>
+                    <div class="col-md-3">
+                        <a href="/product/<%=product.id%>/detail" >
+                            <div class="card p-3 card-product">
+                                <div class="text-center"> <%= image_tag product.image, alt: 'Image', class:'product-image'%></div>
+                                <% unless product.sell_price.nil?%>
+                                    <div class="product-details"> <span class="font-weight-bold d-block lineThrough"><%= product.price %> VND</span>
+                                    <span class="font-weight-bold d-block text-danger"><%= product.sell_price %> VND</span>
+                                <% else %>
+                                <div class="product-details"> <span class="font-weight-bold d-block"><%= product.price %> VND</span>
+                                <% end %>
+                                <span><%= product.name %></span>
+                                    <div class="buttons d-flex flex-row">
+                                        <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button class="btn btn-success cart-button btn-block"><span class="dot">1</span>Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </div>
+                <% end %>
             <% end %>
         </div>
         <div class="digg_pagination float-right mt-3">
-            <%= will_paginate @products  %>
+            <%= will_paginate @products %>
         </div>
     </div>
 </div>
