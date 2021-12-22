@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
-    protect_from_forgery with: :exception
-    include AuthenticationHelper
-
+    before_action :set_find_id , only: %i[ show edit update destroy ]
+    before_action :set_category , only: %i[new create show edit update ]
+    before_action :set_discount , only: %i[new create show edit update ]
     before_action :is_admin?
     def is_admin?
         if logged_in? && current_user.admin == true
@@ -70,5 +70,9 @@ class ProductsController < ApplicationController
     
     def set_discount
         @discount = Discount.all
+    end
+
+    def set_find_id
+        @product = Product.find(params[:id])
     end
 end
