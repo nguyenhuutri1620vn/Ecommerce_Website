@@ -1,4 +1,17 @@
 class DiscountsController < ApplicationController
+    
+    before_action :is_admin?
+    def is_admin?
+        if logged_in? && current_user.admin == true
+        elsif logged_in? && current_user.admin == false
+            flash[:danger] = "Lỗi quyền quản trị"
+            redirect_to frontend_index_path
+        elsif
+            flash[:danger] = "Vui lòng đăng nhập"
+            redirect_to login_path
+        end
+    end
+  
     def index
         @discounts = Discount.all
     end

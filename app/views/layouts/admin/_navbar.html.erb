@@ -17,7 +17,7 @@
                                 </div>
                                 <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Tài khoản</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Cài đặt</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Đăng xuất</a>
+                                <%= link_to "Đăng xuất", logout_path , data: { confirm: "Xác nhận đăng xuất ?" }, class: "dropdown-item" %>
                             </div>
                         </li>
                     </ul>

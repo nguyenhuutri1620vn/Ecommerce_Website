@@ -2245,6 +2245,9 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 .img-banner{
     height: 300px;
 }
+.img-log{
+    height: 300px;
+}
 .product-carousel .carousel-indicators li {
   position: relative;
     -ms-flex: 0 1 auto;

@@ -1,4 +1,12 @@
 class FrontendController < ApplicationController
+  before_action :had_login, only: [:new, :create]
+  layout 'frontend'
+  def had_login
+      unless current_user.nil?
+          redirect_to frontend_index_path
+      end
+  end
+
   def index
     @products = Product.where('status = true')
     @q = Product.ransack(params[:q])
