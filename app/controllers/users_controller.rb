@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_find_id , only: %i[ show edit update destroy changepassword updatepassword]
-  before_action :is_admin?, only: :index
+  before_action :is_admin?
   def is_admin?
       if logged_in? && current_user.admin == true
       elsif logged_in? && current_user.admin == false
