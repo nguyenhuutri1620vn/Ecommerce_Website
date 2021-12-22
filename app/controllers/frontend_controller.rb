@@ -23,8 +23,8 @@ class FrontendController < ApplicationController
 
   def create
     @user = User.new(user_params)   
-    @user.role = false
     if @user.save
+      @user.admin = false
       redirect_to login_path
     else
       render :new
