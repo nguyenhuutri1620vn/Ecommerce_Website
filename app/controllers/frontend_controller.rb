@@ -22,10 +22,13 @@ class FrontendController < ApplicationController
       render :new
     end
   end
-
+  # change pass frontend
+ 
 
   private 
   def user_params
     params.permit(:email, :password, :password_confirmation, :address, :phone, :full_name)
   end
+
+ 
 end

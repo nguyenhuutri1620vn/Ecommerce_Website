@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="profile.css">
+</head>
+
+<body>
+    <div class="container">
+        
+        <div class="menu">
+            <strong>MENU</strong>
+            <ul>
+                <li><a href="#"> Đổi mật khẩu </a></li>
+                <li><a href="#"> Cập nhật thông tin </a></li>
+                <li><a href="#"> Lịch sử đơn hàng </a></li>
+            </ul>
+        </div>
+
+        <div class="content" >
+            <h1> Thông tin khách hàng </h1>
+            <div class="card-header">
+                <h2>
+                <%= @current_user.full_name %>
+                </h2> 
+            </div>
+            <div class="card-body" style="background-color:rgb(253, 251, 251);"> 
+                <p>
+                    Email: <%= @current_user.email %>
+                </p>
+                <p>
+                    Địa chỉ: <%= @current_user.address %>
+                </p>
+                <p>
+                    Số điện thoại: <%= @current_user.phone %>
+                </p>
+                
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

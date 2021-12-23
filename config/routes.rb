@@ -12,9 +12,19 @@ Rails.application.routes.draw do
   get '/login', to: 'authentication#new', as: 'login'
   post 'login', to: 'authentication#create'
   get '/product/:id/detail', to: 'frontend#show'
+  get 'profile', to: 'frontend#profile'
+  get 'profile/:id/change-pass-customer', to: 'frontend#changepasscustomer'
+  patch 'profile/:id/change-pass-customer', to: 'frontend#updatepasscustomer'
+    post 'profile/:id/change-pass-customer', to: 'users#updatepasscustomer'
+
+  
+  
 
   #logout
   get  "logout" ,to: "authentication#destroy"
+
+  
+
 
   scope '/admin' do
     get '/customers', to: 'users#list_customer'

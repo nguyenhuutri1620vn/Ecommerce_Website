@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_find_id, only: %i[show edit update destroy changepassword updatepassword]
+    before_action :set_find_id, only: %i[show edit update destroy changepassword updatepassword changepasscustomer updatepasscustomer]
 
     #show admin list
     def index
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     def new
         @user = User.new
     end
-    
+   
     def create
       @user = User.new(user_params)   
       @user.role = true
@@ -50,7 +50,18 @@ class UsersController < ApplicationController
         render :changepassword
       end
     end
+    
+    def changepasscustomer
+    end
   
+    def updatepasscustomer
+      if @user.update(change_pass_customer)
+        redirect_to profile_path
+      else
+        render :changepasscustomer
+      end
+    end
+   
     #destroy user
     def destroy
       @user.destroy
@@ -69,10 +80,14 @@ class UsersController < ApplicationController
 
     def change_password
       params.permit(:password, :password_confirmation)
-    end
+    end 
 
     def set_find_id
       @user = User.find(params[:id])
+    end
+   
+    def changepasscustomer
+      params.permit(:password, :password_confirmation)
     end
 end
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
