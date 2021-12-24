@@ -22,9 +22,10 @@ class FrontendController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)   
+    @user = User.new(user_params)
+    @user.admin = false
     if @user.save
-      @user.admin = false
+      flash[:success] = "Đăng ký thành công"
       redirect_to login_path
     else
       render :new

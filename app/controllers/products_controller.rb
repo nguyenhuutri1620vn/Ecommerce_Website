@@ -6,8 +6,7 @@ class ProductsController < ApplicationController
     def is_admin?
         if logged_in? && current_user.admin == true
         elsif logged_in? && current_user.admin == false
-            flash[:danger] = "Lỗi quyền quản trị"
-            redirect_to frontend_index_path
+            redirect_to "/403"
         elsif
             flash[:danger] = "Vui lòng đăng nhập"
             redirect_to login_path
@@ -30,8 +29,14 @@ class ProductsController < ApplicationController
     
     def create
         @product = Product.new(products_params)
+        unless @product.price.nil?
+            if @product.discount.percent == 0
+                @product.sell_price = nil
+            else
+                @product.sell_price = @product.price * (100 - (@product.discount.percent / 100)) 
+            end
+        end
         if @product.save
-          @product.sell_price = @product.price * (100 - (@product.discount.percent / 100)) 
           redirect_to products_path
         else
           render :new

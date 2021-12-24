@@ -4,8 +4,7 @@ class UsersController < ApplicationController
   def is_admin?
       if logged_in? && current_user.admin == true
       elsif logged_in? && current_user.admin == false
-          flash[:danger] = "Lỗi quyền quản trị"
-          redirect_to frontend_index_path
+        redirect_to "/403"
       elsif
           flash[:danger] = "Vui lòng đăng nhập"
           redirect_to login_path
@@ -14,11 +13,13 @@ class UsersController < ApplicationController
 
   #show admin list
   def index
-    @users = User.where('admin = true')
+    @q = User.ransack(params[:q])
+    @users = @q.result.paginate(page: params[:page], per_page: 10).where("admin = true").order('created_at DESC')
   end
   #show customer list
   def list_customer
-    @customers = User.where('admin = false')
+    @q = User.ransack(params[:q])
+    @customers = @q.result.paginate(page: params[:page], per_page: 10).where("admin = 'false'").order('created_at DESC')
   end
   #show detail user
   def show
@@ -31,8 +32,8 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)   
+    @user.admin = true
     if @user.save
-      @user.admin = true
       redirect_to users_path
     else
       render :new

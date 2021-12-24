@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
+  include AuthenticationHelper
   add_flash_types :info, :error, :warning
   protect_from_forgery with: :exception
-  include AuthenticationHelper
-
   before_action :require_login
 
   def require_login
@@ -11,8 +10,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
-  
   def is_admin?
       if logged_in? && current_user.admin == true
           redirect_to products_path
@@ -22,4 +19,5 @@ class ApplicationController < ActionController::Base
           redirect_to login_path
       end
   end
+
 end
