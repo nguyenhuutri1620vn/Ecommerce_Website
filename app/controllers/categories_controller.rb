@@ -5,8 +5,7 @@ class CategoriesController < ApplicationController
   def is_admin?
       if logged_in? && current_user.admin == true
       elsif logged_in? && current_user.admin == false
-        flash[:danger] = "Lỗi quyền quản trị"
-        redirect_to frontend_index_path
+        redirect_to "/403"
       elsif
         flash[:danger] = "Vui lòng đăng nhập"
         redirect_to login_path

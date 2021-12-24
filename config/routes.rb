@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root "frontend#index"
   resources :authentications, only: [:new, :create, :destroy]
   resources :frontend, only: [:new, :create, :index, :show]
-
+  match "/404", to: "errors#not_found", via: :all
+  match "/500", to: "errors#interal_server_error", via: :all
+  match "/403", to: "errors#authentication_error", via: :all
+  
   #register
   get '/register', to: 'frontend#new'
   post '/register', to: 'frontend#create'
@@ -27,4 +30,5 @@ Rails.application.routes.draw do
     resources :products
   end
 
+  
 end
