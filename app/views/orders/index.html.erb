@@ -1,0 +1,28 @@
+<div class='mx-4'>
+    <h4>DANH SÁCH ORDER
+    </h4>
+    <div class="card mt-2">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Ma Don</th>
+                        <th scope="col">So Luong</th>
+                        <th scope="col">Thanh Tien</th>
+                        <th scope="col">Do something</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @orders.each do |order| %>
+                            <tr>
+                                <td><%= order.id%></td>
+                                <td><%= order.quantity%></td>
+                                <td><%= order.total_price%></td>
+                                <td><%= link_to 'Chi tiet', order %></td>
+                            </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

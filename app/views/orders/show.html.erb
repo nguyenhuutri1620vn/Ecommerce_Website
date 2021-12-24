@@ -1,0 +1,27 @@
+<%= link_to "< Don hang", url_for(:back) , class: 'btn btn-secondary mb-2' %>
+<div class='card'>
+    <div class='card-header'>ID don hang: <b><%= @order.id %></b></div>
+    <div class='card-body'>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">San pham</th>
+                    <th scope="col">So luong</th>
+                    <th scope="col">Don gia</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% sum = 0 %>
+                <% @orders.each do |order| %>
+                    <tr>
+                        <td><%= order.product_id%></td>
+                        <td><%= order.quantity%></td>
+                        <td><%= order.price%></td>
+                        <% sum += order.price %>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>        
+    </div>
+    <h1 style="text-align: right;">Thanh tien: <%= sum %></h1>
+</div>

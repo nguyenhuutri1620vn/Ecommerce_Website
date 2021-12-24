@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get '/register', to: 'frontend#new'
   post '/register', to: 'frontend#create'
 
+  #
+  get "carts", to: 'carts#index'
+
   # #login
   get '/login', to: 'authentication#new', as: 'login'
   post 'login', to: 'authentication#create'
@@ -18,6 +21,8 @@ Rails.application.routes.draw do
 
   scope '/admin' do
     get '/customers', to: 'users#list_customer'
+    resources :orders
+
     resources :categories
     resources :users
     resources :discounts
@@ -26,5 +31,4 @@ Rails.application.routes.draw do
     post '/users/:id/change-password', to: 'users#updatepassword'
     resources :products
   end
-
 end
