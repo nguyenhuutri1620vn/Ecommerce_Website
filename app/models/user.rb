@@ -10,7 +10,7 @@ class User < ApplicationRecord
   validates :email, presence: {message: "Vui lòng nhập email"}, uniqueness: {message: "Email đã được đăng ký"}, 
   format: { with: URI::MailTo::EMAIL_REGEXP , message: "Email không đúng định dạng"} , on: [:create, :update]
   validates :address, presence: {message: "Vui lòng nhập địa chỉ"}, on: [:create, :update]
-  validates :phone, length: {is: 9, message: 'Số điện thoại không đúng'}, on: [:create, :update]
+  validates :phone, length: {is: 10, message: 'Số điện thoại không đúng'}, on: [:create, :update]
 
   validates_confirmation_of :password, allow_blank: true
 end

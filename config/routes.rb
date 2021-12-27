@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     patch '/users/:id/change-password', to: 'users#updatepassword'
     post '/users/:id/change-password', to: 'users#updatepassword'
     resources :products
+    resources :orders
+    get '/unapprove', to: 'orders#unapprove'
   end
 
   

@@ -22,7 +22,7 @@ def drop_db
     ["yennhi@mail.com", "123123", "123123", "Trần Linh Yến Nhi", "0983054815", "265 Nguyễn Đình Chiểu, Phường 5, Quận 3, Tp.HCM", "false"]
   ]
   user_list.each do |email,password,password_confirmation,full_name,phone,address,role|
-    User.create!( email: email, password: password, password_confirmation: password_confirmation, full_name: full_name, phone: phone, address: address, role: role )
+    User.create!( email: email, password: password, password_confirmation: password_confirmation, full_name: full_name, phone: phone, address: address, admin: role )
   end
   
   category_list = [
@@ -89,12 +89,12 @@ def drop_db
   user4 = User.find_by(email: "leha@mail.com").id
   user5 = User.find_by(email: "dangkhoa@mail.com").id
   order_list = [
-    [user3, 3, 49597100],
-    [user4, 2, 3399800],
-    [user5, 1, 5354150],
+    [user3, 3, 1, 49597100],
+    [user4, 2, 1, 3399800],
+    [user5, 1, 0, 5354150],
   ]
-  order_list.each do |user_id,quantity,total_price|
-    Order.create!( user_id: user_id,quantity: quantity, total_price: total_price )
+  order_list.each do |user_id,quantity,status,total_price|
+    Order.create!( user_id: user_id,quantity: quantity, status: status, total_price: total_price )
   end
   
   product1 = Product.find_by(name: "Laptop Fujitsu CH").id

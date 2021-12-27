@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2021_12_08_022851) do
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "quantity"
+    t.integer "status"
     t.decimal "total_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -88,11 +89,16 @@ ActiveRecord::Schema.define(version: 2021_12_08_022851) do
     t.bigint "category_id"
     t.string "name"
     t.decimal "price"
-    t.decimal "sell_price"
     t.string "description"
+    t.string "image_path"
     t.boolean "status"
     t.integer "quantity"
     t.bigint "discount_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "staffs", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -106,9 +112,9 @@ ActiveRecord::Schema.define(version: 2021_12_08_022851) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "full_name"
-    t.bigint "phone"
+    t.string "phone"
     t.string "address"
-    t.boolean "role"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
