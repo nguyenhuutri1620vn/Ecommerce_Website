@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   match "/500", to: "errors#interal_server_error", via: :all
   match "/403", to: "errors#authentication_error", via: :all
   
+  get '/categories/:id', to: "frontend#select_category"
   #register
   get '/register', to: 'frontend#new'
   post '/register', to: 'frontend#create'

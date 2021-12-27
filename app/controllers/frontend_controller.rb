@@ -8,9 +8,9 @@ class FrontendController < ApplicationController
   end
 
   def index
-    @products = Product.where('status = true')
+    @categories = Category.where('status = true')
     @q = Product.ransack(params[:q])
-    @products = @q.result.paginate(page: params[:page], per_page: 20).order('created_at DESC')
+    @products = @q.result.paginate(page: params[:page], per_page: 20).where('status = true').order('created_at DESC')
   end
 
   def show
@@ -32,6 +32,11 @@ class FrontendController < ApplicationController
     end
   end
 
+  def select_category
+    @categories = Category.where('status = true')
+    @q = Product.ransack(params[:q])
+    @products = @q.result.paginate(page: params[:page], per_page: 20).where("category_id = #{params[:id]}", "status = true").order('created_at DESC')
+  end
 
   private 
   def user_params
