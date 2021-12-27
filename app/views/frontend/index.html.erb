@@ -38,7 +38,7 @@
                                 <div class="text-center"> <%= image_tag product.image, alt: 'Image', class:'product-image'%></div>
                                 <% unless product.sell_price.nil?%>
                                     <div class="product-details"> <span class="font-weight-bold d-block lineThrough"><%= product.price %> VND</span>
-                                    <span class="font-weight-bold d-block text-danger"><%= product.sell_price %> VND</span>
+                                    <span class="font-weight-bold d-block text-danger">Chỉ còn: <%= product.sell_price %> VND</span>
                                 <% else %>
                                 <div class="product-details"> <span class="font-weight-bold d-block"><%= product.price %> VND</span>
                                 <% end %>
