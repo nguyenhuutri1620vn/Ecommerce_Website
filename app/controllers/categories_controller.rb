@@ -1,16 +1,7 @@
 class CategoriesController < ApplicationController  
   before_action :set_find_id , only: %i[ show edit update destroy ]
-  before_action :is_admin?, only: %i[ index ]
-
-  def is_admin?
-      if logged_in? && current_user.admin == true
-      elsif logged_in? && current_user.admin == false
-        redirect_to "/403"
-      elsif
-        flash[:danger] = "Vui lòng đăng nhập"
-        redirect_to login_path
-      end
-  end
+  before_action :is_admin?
+  include ApplicationHelper
 
   def index
     @categories = Category.all

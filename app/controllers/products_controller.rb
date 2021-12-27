@@ -3,15 +3,8 @@ class ProductsController < ApplicationController
     before_action :set_category , only: %i[new create show edit update ]
     before_action :set_discount , only: %i[new create show edit update ]
     before_action :is_admin?
-    def is_admin?
-        if logged_in? && current_user.admin == true
-        elsif logged_in? && current_user.admin == false
-            redirect_to "/403"
-        elsif
-            flash[:danger] = "Vui lòng đăng nhập"
-            redirect_to login_path
-        end
-    end
+    include ApplicationHelper
+
   
     def index
         @products = Product.all
