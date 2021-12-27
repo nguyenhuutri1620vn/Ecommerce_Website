@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_find_id , only: %i[ show edit update destroy changepassword updatepassword]
-  before_action :is_admin?
+  before_action :is_admin?, only: %i[index list_customer show new create edit update destroy changepassword updatepassword]
   include ApplicationHelper
 
   #show admin list

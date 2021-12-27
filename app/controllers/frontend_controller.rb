@@ -1,5 +1,6 @@
 class FrontendController < ApplicationController
   before_action :had_login, only: [:new, :create]
+  
   layout 'frontend'
   def had_login
       unless current_user.nil?
@@ -38,8 +39,27 @@ class FrontendController < ApplicationController
     @products = @q.result.paginate(page: params[:page], per_page: 20).where("category_id = #{params[:id]}", "status = true").order('created_at DESC')
   end
 
+  def editprofile 
+  end
+
+  def changepasscustomer
+  end
+
+  def updatepasscustomer
+    if @current_user.update(change_password)
+      redirect_to profile_path
+    else
+      flash[:danger] = 'Đổi mật khẩu không thành công'
+      render :changepasscustomer
+    end
+  end
+
   private 
   def user_params
     params.permit(:email, :password, :password_confirmation, :address, :phone, :full_name)
+  end
+
+  def change_password
+    params.permit(:password, :password_confirmation)
   end
 end

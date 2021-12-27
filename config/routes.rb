@@ -12,10 +12,17 @@ Rails.application.routes.draw do
   get '/register', to: 'frontend#new'
   post '/register', to: 'frontend#create'
 
-  # #login
+  #login
   get '/login', to: 'authentication#new', as: 'login'
   post 'login', to: 'authentication#create'
   get '/product/:id/detail', to: 'frontend#show'
+
+  #Change password
+  get 'profile', to: 'frontend#profile'
+  get 'profile/change-pass-customer', to: 'frontend#changepasscustomer'
+  post 'profile/change-pass-customer', to: 'frontend#updatepasscustomer'
+  #Change info
+  get "/profile/editprofile", to: "frontend#editprofile"
 
   #logout
   get  "logout" ,to: "authentication#destroy"

@@ -18,7 +18,7 @@
                         <%= form.password_field :password , class: "form-control", placeholder: 'Nhập mật khẩu..'%>
                     </div>
                     <% flash.each do |type, msg| %>                                                                                                                                                                                                                                                                                                                 
-                        <div class='text-danger'>
+                        <div class="text-<%= type %>">
                             <%= msg %>
                         </div>
                     <% end %>
