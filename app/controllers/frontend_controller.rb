@@ -39,7 +39,15 @@ class FrontendController < ApplicationController
     @products = @q.result.paginate(page: params[:page], per_page: 20).where("category_id = #{params[:id]}", "status = true").order('created_at DESC')
   end
 
-  def editprofile 
+  def editprofile
+  end
+
+  def updateprofile
+    if @current_user.update(update_params)
+      redirect_to profile_path
+    else
+      render :editprofile
+    end
   end
 
   def changepasscustomer
@@ -61,5 +69,9 @@ class FrontendController < ApplicationController
 
   def change_password
     params.permit(:password, :password_confirmation)
+  end
+
+  def update_params
+    params.permit(:address, :phone, :full_name)
   end
 end

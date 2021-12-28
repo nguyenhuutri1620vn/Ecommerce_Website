@@ -21,8 +21,10 @@ Rails.application.routes.draw do
   get 'profile', to: 'frontend#profile'
   get 'profile/change-pass-customer', to: 'frontend#changepasscustomer'
   post 'profile/change-pass-customer', to: 'frontend#updatepasscustomer'
+  
   #Change info
   get "/profile/editprofile", to: "frontend#editprofile"
+  post "/profile/editprofile", to: "frontend#updateprofile"
 
   #logout
   get  "logout" ,to: "authentication#destroy"
