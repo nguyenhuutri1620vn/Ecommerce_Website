@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
     before_action :set_order, only: %i[show edit update destroy]
-
+	include ApplicationHelper
+	before_action :is_admin?
+	
 	def index
 		@orders = Order.list(1).paginate(:page => params[:page], :per_page => 10).order('created_at asc')
 	end
