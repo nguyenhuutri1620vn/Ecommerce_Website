@@ -1,12 +1,12 @@
 class FrontendController < ApplicationController
   include ApplicationHelper
   before_action :had_login, only: [:new, :create]
-  
   layout 'frontend'
+
   def index
-    @categories = Category.where('status = true')
+    @categories = Category.list(true)
     @q = Product.ransack(params[:q])
-    @products = @q.result.paginate(page: params[:page], per_page: 20).where('status = true').order('created_at DESC')
+    @products = @q.result.paginate(page: params[:page], per_page: 20).list(true).order('created_at DESC')
   end
 
   def show
@@ -30,9 +30,9 @@ class FrontendController < ApplicationController
   end
 
   def select_category
-    @categories = Category.where('status = true')
+    @categories = Category.list(true)
     @q = Product.ransack(params[:q])
-    @products = @q.result.paginate(page: params[:page], per_page: 20).where("category_id = #{params[:id]}", "status = true").order('created_at DESC')
+    @products = @q.result.paginate(page: params[:page], per_page: 20).selectcate(params[:id]).list(true).order('created_at DESC')
   end
 
   def editprofile

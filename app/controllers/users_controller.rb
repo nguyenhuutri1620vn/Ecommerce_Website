@@ -1,17 +1,17 @@
 class UsersController < ApplicationController
   before_action :set_find_id , only: %i[ show edit update destroy changepassword updatepassword]
-  before_action :is_admin?, only: %i[index list_customer show new create edit update destroy changepassword updatepassword]
+  before_action :is_admin?
   include ApplicationHelper
 
   #show admin list
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result.paginate(page: params[:page], per_page: 10).where("admin = true").order('created_at DESC')
+    @users = @q.result.paginate(page: params[:page], per_page: 10).list(true).order('created_at DESC')
   end
   #show customer list
   def list_customer
     @q = User.ransack(params[:q])
-    @customers = @q.result.paginate(page: params[:page], per_page: 10).where("admin = 'false'").order('created_at DESC')
+    @customers = @q.result.paginate(page: params[:page], per_page: 10).list(false).order('created_at DESC')
   end
   #show detail user
   def show

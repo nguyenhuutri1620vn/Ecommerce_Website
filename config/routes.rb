@@ -35,7 +35,6 @@ Rails.application.routes.draw do
     resources :users
     resources :discounts
     get '/users/:id/change-password', to: 'users#changepassword'
-    patch '/users/:id/change-password', to: 'users#updatepassword'
     post '/users/:id/change-password', to: 'users#updatepassword'
     resources :products
     resources :orders
