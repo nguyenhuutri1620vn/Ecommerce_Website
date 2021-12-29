@@ -1,12 +1,9 @@
 class AuthenticationController < ApplicationController
     # skip_before_action :require_login, only: [:new, :create]
+    include ApplicationHelper
     before_action :had_login, only: [:new, :create]
     layout 'frontend'
-    def had_login
-        unless current_user.nil?
-            redirect_to frontend_index_path
-        end
-    end
+    
     #login
     def new
     end

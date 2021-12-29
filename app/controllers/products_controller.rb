@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     before_action :is_admin?
     include ApplicationHelper
 
-  
+   
     def index
         @products = Product.all
         @q = Product.ransack(params[:q])

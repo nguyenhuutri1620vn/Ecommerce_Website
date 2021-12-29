@@ -8,4 +8,10 @@ module ApplicationHelper
             redirect_to login_path
         end
     end
+    
+    def had_login
+        unless current_user.nil?
+            redirect_to frontend_index_path
+        end
+    end 
 end

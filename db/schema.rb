@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_08_022851) do
+ActiveRecord::Schema.define(version: 2021_12_29_085353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,28 +79,23 @@ ActiveRecord::Schema.define(version: 2021_12_08_022851) do
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "quantity"
-    t.integer "status"
     t.decimal "total_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status"
   end
 
   create_table "products", force: :cascade do |t|
-    t.bigint "category_id"
-    t.string "name"
-    t.decimal "price"
-    t.string "description"
-    t.string "image_path"
-    t.boolean "status"
-    t.integer "quantity"
-    t.bigint "discount_id"
+    t.bigint "category_id", null: false
+    t.string "name", null: false
+    t.decimal "price", null: false
+    t.string "description", null: false
+    t.boolean "status", null: false
+    t.integer "quantity", null: false
+    t.bigint "discount_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "staffs", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.decimal "sell_price"
   end
 
   create_table "users", force: :cascade do |t|
@@ -112,7 +107,7 @@ ActiveRecord::Schema.define(version: 2021_12_08_022851) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "full_name"
-    t.string "phone"
+    t.bigint "phone"
     t.string "address"
     t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true

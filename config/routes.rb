@@ -21,8 +21,10 @@ Rails.application.routes.draw do
   get 'profile', to: 'frontend#profile'
   get 'profile/change-pass-customer', to: 'frontend#changepasscustomer'
   post 'profile/change-pass-customer', to: 'frontend#updatepasscustomer'
+  
   #Change info
   get "/profile/editprofile", to: "frontend#editprofile"
+  patch "/profile/editprofile", to: "frontend#updateprofile"
 
   #logout
   get  "logout" ,to: "authentication#destroy"
@@ -33,7 +35,6 @@ Rails.application.routes.draw do
     resources :users
     resources :discounts
     get '/users/:id/change-password', to: 'users#changepassword'
-    patch '/users/:id/change-password', to: 'users#updatepassword'
     post '/users/:id/change-password', to: 'users#updatepassword'
     resources :products
     resources :orders

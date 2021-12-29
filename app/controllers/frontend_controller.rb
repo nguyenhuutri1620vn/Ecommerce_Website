@@ -1,22 +1,18 @@
 class FrontendController < ApplicationController
+  include ApplicationHelper
   before_action :had_login, only: [:new, :create]
-  
   layout 'frontend'
-  def had_login
-      unless current_user.nil?
-          redirect_to frontend_index_path
-      end
-  end
 
   def index
-    @categories = Category.where('status = true')
+    @categories = Category.list(true)
     @q = Product.ransack(params[:q])
-    @products = @q.result.paginate(page: params[:page], per_page: 20).where('status = true').order('created_at DESC')
+    @products = @q.result.paginate(page: params[:page], per_page: 20).list(true).order('created_at DESC')
   end
 
   def show
-    @product = Product.find(params[:id]) 
+    @product = Product.find(params[:id])
   end
+
   #register
   def new
     @user = User.new
@@ -34,12 +30,21 @@ class FrontendController < ApplicationController
   end
 
   def select_category
-    @categories = Category.where('status = true')
+    @categories = Category.list(true)
     @q = Product.ransack(params[:q])
-    @products = @q.result.paginate(page: params[:page], per_page: 20).where("category_id = #{params[:id]}", "status = true").order('created_at DESC')
+    @products = @q.result.paginate(page: params[:page], per_page: 20).selectcate(params[:id]).list(true).order('created_at DESC')
   end
 
-  def editprofile 
+  def editprofile
+    @current_user
+  end
+
+  def updateprofile
+    if @current_user.update(update_params)
+      redirect_to profile_path
+    else
+      render :editprofile
+    end
   end
 
   def changepasscustomer
@@ -61,5 +66,9 @@ class FrontendController < ApplicationController
 
   def change_password
     params.permit(:password, :password_confirmation)
+  end
+
+  def update_params
+    params.require(:user).permit(:address, :phone, :full_name)
   end
 end

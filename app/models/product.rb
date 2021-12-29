@@ -12,4 +12,12 @@ class Product < ApplicationRecord
   # validates :image , presence: {message: 'Hình ảnh chưa được upload'}
   validates :description , presence: {message: 'Vui lòng nhập mô tả'}
   validates :discount_id, presence: {message: 'Vui lòng chọn mã giảm giá'}
+
+  def self.list(status)
+    where('status = ?', "#{status}")
+  end
+  
+  def self.selectcate(id)
+    where("category_id = ?", "#{id}")
+  end
 end
