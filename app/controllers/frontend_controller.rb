@@ -1,13 +1,8 @@
 class FrontendController < ApplicationController
+  include ApplicationHelper
   before_action :had_login, only: [:new, :create]
   
   layout 'frontend'
-  def had_login
-      unless current_user.nil?
-          redirect_to frontend_index_path
-      end
-  end
-
   def index
     @categories = Category.where('status = true')
     @q = Product.ransack(params[:q])
@@ -15,8 +10,9 @@ class FrontendController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id]) 
+    @product = Product.find(params[:id])
   end
+
   #register
   def new
     @user = User.new
@@ -73,6 +69,6 @@ class FrontendController < ApplicationController
   end
 
   def update_params
-    params.permit(:address, :phone, :full_name)
+    params.require(:user).permit(:address, :phone, :full_name)
   end
 end

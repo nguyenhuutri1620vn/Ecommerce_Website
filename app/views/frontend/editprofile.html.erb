@@ -9,7 +9,7 @@
     </div>
     <div class="content" >
         <h1>Cập nhật thông tin</h1>
-        <%= form_with url: "/profile/editprofile", method: :post do |form| %>
+        <%= form_with url: "/profile/editprofile", model: @current_user do |form| %>
         <div class="form-group">
             <%= form.label :'Họ và tên' %>
             <%= form.text_field :full_name , class: "form-control", placeholder: 'Nhập họ và tên..'%>

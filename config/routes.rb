@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   
   #Change info
   get "/profile/editprofile", to: "frontend#editprofile"
-  post "/profile/editprofile", to: "frontend#updateprofile"
+  patch "/profile/editprofile", to: "frontend#updateprofile"
 
   #logout
   get  "logout" ,to: "authentication#destroy"
