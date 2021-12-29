@@ -9,6 +9,7 @@
                         <th scope="col">Mã Đơn</th>
                         <th scope="col">Tổng Số Sản Phẩm</th>
                         <th scope="col">Thành Tiền</th>
+                        <th scope="col">Trạng Thái</th>
                         <th scope="col">Thao Tác</th>
                     </tr>
                 </thead>
@@ -18,7 +19,8 @@
                                 <td><%= order.id%></td>
                                 <td><%= order.quantity%></td>
                                 <td><%= order.total_price%></td>
-                                <td><%= link_to 'Chi tiet', order %></td>
+                                <td>Đã Duyệt</td>
+                                <td class="btn btn-brand"><%= link_to 'Chi tiet', order %></td>
                             </tr>
                     <% end %>
                 </tbody>

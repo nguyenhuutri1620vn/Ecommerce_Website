@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     resources :products
     resources :orders
     get '/unapprove', to: 'orders#unapprove'
+    get '/approve/:id', to: 'orders#approve'
   end
 
   

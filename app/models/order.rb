@@ -6,4 +6,9 @@ class Order < ApplicationRecord
   def self.list(status)
     where('status = ?', "#{status}")
   end
+
+  def self.approve(id)
+    item = Order.find(id)
+    item.update(status: 1)
+  end
 end

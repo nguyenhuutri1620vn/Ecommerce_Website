@@ -6,11 +6,16 @@ class OrdersController < ApplicationController
 	end
 
 	def show		
-		@orders = OrderDetail.detail(params[:id]).paginate(:page => params[:page], :per_page => 10).order('created_at asc')
+		@orders = OrderDetail.detail(params[:id]).paginate(:page => params[:page], :per_page => 10).order('created_at asc')		
 	end
 
 	def unapprove
 		@orders = Order.list(0).paginate(:page => params[:page], :per_page => 10).order('created_at asc')
+	end
+
+	def approve
+		Order.approve(params[:id])
+		@orders = OrderDetail.detail(params[:id]).paginate(:page => params[:page], :per_page => 10).order('created_at asc')		
 	end
 
 	def new
@@ -27,6 +32,6 @@ class OrdersController < ApplicationController
   	end
 
   	def order_params
-    	params.require(:order).permit(:user_id, :order_id, :product_id, :quantity)
+    	params.require(:order).permit(:user_id, :order_id, :product_id, :quantity, :status)
   	end
 end
