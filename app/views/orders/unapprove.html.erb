@@ -10,7 +10,7 @@
                         <th scope="col">Tổng Số Sản Phẩm</th>
                         <th scope="col">Thành Tiền</th>
                         <th scope="col">Trạng Thái</th>
-                        <th colspan="2">Thao Tác</th>
+                        <th colspan="2" class='text-center'>Thao Tác</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,8 +20,8 @@
                                 <td><%= order.quantity%></td>
                                 <td><%= order.total_price%></td>
                                 <td>Chưa Duyệt</td>
-                                <td class="btn btn-brand"><%= link_to 'Chi tiet', order %></td>
-                                <td class="btn btn-secondary"><%= link_to 'Duyet', "/admin/approve/#{order.id}"%></td>
+                                <td><%= link_to 'Chi tiết', order , :class => 'btn btn-brand'%></td>
+                                <td><%= link_to 'Duyệt', "/admin/approve/#{order.id}", :class => 'btn btn-secondary'%></td>
                             </tr>
                     <% end %>
                 </tbody>
