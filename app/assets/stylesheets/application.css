@@ -7026,3 +7026,7 @@ Media Query
 .card-filter{
     width: 100%;
 }
+.card-dashboard{
+    width: 100%;
+    height: 100px;
+}
