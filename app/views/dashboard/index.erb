@@ -1,0 +1,52 @@
+<div class='container'>
+    <div class='row'>
+        <div class='col-3'>
+            <div class='card card-dashboard bg-info'>
+                <a href='/admin/orders'>
+                    <div class='card-header bg-info'>
+                        <b>ĐƠN HÀNG</b>
+                    </div>
+                    <div class='card-body'>
+                        SỐ ĐƠN HÀNG: <%= @orders %>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class='col-3'>
+            <div class='card card-dashboard bg-success'>
+                <a href='/admin/products'>
+                    <div class='card-header bg-success'>
+                    <b>SẢN PHẨM</b>
+                    </div>
+                    <div class='card-body'>
+                        SỐ SẢN PHẨM:  <%= @products %>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class='col-3'>
+            <div class='card card-dashboard bg-brand'>
+                <a href='/admin/users'>
+                    <div class='card-header bg-brand'>
+                        <b>NHÂN VIÊN</b>
+                    </div>
+                    <div class='card-body'>
+                        SỐ NHÂN VIÊN:  <%= @staffs %>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class='col-3'>
+            <div class='card card-dashboard bg-dark'>
+            <a href='/admin/customers'>
+                <div class='card-header bg-dark'>
+                    <b>KHÁCH HÀNG</b>
+                </div>
+                <div class='card-body'>
+                    SỐ KHÁCH HÀNG:  <%= @customers %>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+</div>

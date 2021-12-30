@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def is_admin?
       if logged_in? && current_user.admin == true
-          redirect_to products_path
+          redirect_to dashboard_index
       elsif logged_in? && current_user.admin == false
           redirect_to frontend_index_path
       elsif

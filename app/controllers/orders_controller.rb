@@ -3,6 +3,9 @@ class OrdersController < ApplicationController
 	include ApplicationHelper
 	before_action :is_admin?
 	
+	def dashboard
+	end
+
 	def index
 		@orders = Order.list(1).paginate(:page => params[:page], :per_page => 10).order('created_at asc')
 	end
