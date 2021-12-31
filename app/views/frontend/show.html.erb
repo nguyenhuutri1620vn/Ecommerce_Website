@@ -6,7 +6,9 @@
     </div>
     <div class='col'>
       <h3>Số lượng: <%= @product.quantity %></h3>
-      <% unless @product.sell_price.nil?%>
+      <% days_str = (@product.discount.starts_at.to_date..@product.discount.ends_at.to_date).map{ |date| date.strftime("%Y-%m-%d") == Date.today.strftime("%Y-%m-%d")}%>
+      <% sell_day = days_str.detect{|e| e == true}  %>
+      <% if sell_day == true %>
         <h3 class='lineThrough'>Giá: <%= @product.price %></h3>
         <h3 class='text-danger'>Giá đã giảm: <%= @product.sell_price %></h3>
       <% else %>

@@ -9,20 +9,26 @@
                         <th scope="col">Mã Đơn</th>
                         <th scope="col">Tổng Số Sản Phẩm</th>
                         <th scope="col">Thành Tiền</th>
+                        <th scope="col">Ngày mua</th>
                         <th scope="col">Trạng Thái</th>
                         <th colspan="2" class='text-center'>Thao Tác</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <% if @orders.length == 0 %>
+                    <tr><td class='text-center' colspan="7">Hiện tại không có hóa đơn chưa được duyệt</td></tr>
+                    <%else%>
                     <% @orders.each do |order| %>
                             <tr>
                                 <td><%= order.id%></td>
                                 <td><%= order.quantity%></td>
                                 <td><%= order.total_price%></td>
+                                <td><%= order.created_at %></td>
                                 <td>Chưa Duyệt</td>
                                 <td><%= link_to 'Chi tiết', order , :class => 'btn btn-brand'%></td>
                                 <td><%= link_to 'Duyệt', "/admin/approve/#{order.id}", :class => 'btn btn-secondary'%></td>
                             </tr>
+                    <% end %>
                     <% end %>
                 </tbody>
             </table>

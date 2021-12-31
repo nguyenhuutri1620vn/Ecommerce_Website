@@ -50,16 +50,18 @@
                         <a href="/product/<%=product.id%>/detail" >
                             <div class="card p-3 card-product">
                                 <div class="text-center"> <%= image_tag product.image, alt: 'Image', class:'product-image'%></div>
-                                <% unless product.sell_price.nil?%>
+                                <% days_str = (product.discount.starts_at.to_date..product.discount.ends_at.to_date).map{ |date| date.strftime("%Y-%m-%d") == Date.today.strftime("%Y-%m-%d")}%>
+                                <% sell_day = days_str.detect{|e| e == true}  %>
+                                <% if sell_day == true %>
                                     <div class="product-details"> <span class="font-weight-bold d-block lineThrough"><%= product.price %> VND</span>
+                                    <div>Sale từ <p v class='text-secondary'><%= product.discount.starts_at.strftime('%d/%m/%Y')%> - <%= product.discount.ends_at.strftime('%d/%m/%Y')%></p></div>
                                     <span class="font-weight-bold d-block text-danger">Chỉ còn: <%= product.sell_price %> VND</span>
                                 <% else %>
+                                
                                 <div class="product-details"> <span class="font-weight-bold d-block"><%= product.price %> VND</span>
                                 <% end %>
                                 <span><%= product.name %></span>
-                                    <div class="buttons d-flex flex-row">
-                                        <button class="btn btn-success cart-button btn-block"><span class="dot">1</span>Thêm vào giỏ hàng</button>
-                                    </div>
+                                   
                                 </div>
                             </div>
                         </a>
