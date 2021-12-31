@@ -42,8 +42,13 @@ class ProductsController < ApplicationController
 
     def update
         @product = Product.find(params[:id])
+        if @product.discount_id == 13
+            @product.sell_price = @product.price
+        else
+            @product.sell_price = @product.price * (100 - (@product.discount.percent / 100)) 
+        end
         if @product.update(products_params)
-            @product.sell_price = @product.price * (1 - (@product.discount.percent / 100)) 
+            
             redirect_to product_path(params[:id])
         else
             render :edit
