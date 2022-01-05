@@ -12,7 +12,7 @@ class AuthenticationController < ApplicationController
         user = User.find_by email: params[:session][:email]
         if user && user.authenticate(params[:session][:password]) && user.admin == true
             log_in user
-            redirect_to products_path
+            redirect_to dashboard_index_url
         elsif user && user.authenticate(params[:session][:password]) && user.admin == false
             log_in user
             redirect_to frontend_index_path
@@ -26,5 +26,4 @@ class AuthenticationController < ApplicationController
     def destroy
         log_out
     end
-
 end

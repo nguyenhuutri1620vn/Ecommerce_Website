@@ -6,19 +6,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless logged_in?
-      
     end
   end
-
-  def is_admin?
-      if logged_in? && current_user.admin == true
-          redirect_to dashboard_index
-      elsif logged_in? && current_user.admin == false
-          redirect_to frontend_index_path
-      elsif
-          redirect_to login_path
-      end
-  end
-
   
 end
