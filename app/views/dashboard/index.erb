@@ -1,52 +1,153 @@
-<div class='container'>
-    <div class='row'>
-        <div class='col-3'>
-            <div class='card card-dashboard bg-info'>
-                <a href='/admin/orders'>
-                    <div class='card-header bg-info'>
-                        <b>ĐƠN HÀNG</b>
+<html>
+    <head>
+    
+    <head>
+    <body>
+        <div class='container'>
+            <div class='row'>
+                <div class='col-3 col-xl-3 col-lg-9 col-md-12 col-sm-12'>
+                    <div class='card card-dashboard bg-info'>
+                        <a href='/admin/orders'>
+                            <div class='card-header bg-info'>
+                                <b>ĐƠN HÀNG</b>
+                            </div>
+                            <div class='card-body'>
+                                SỐ ĐƠN HÀNG: <%= @orders %>
+                            </div>
+                        </a>
                     </div>
-                    <div class='card-body'>
-                        SỐ ĐƠN HÀNG: <%= @orders %>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class='col-3'>
-            <div class='card card-dashboard bg-success'>
-                <a href='/admin/products'>
-                    <div class='card-header bg-success'>
-                    <b>SẢN PHẨM</b>
-                    </div>
-                    <div class='card-body'>
-                        SỐ SẢN PHẨM:  <%= @products %>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class='col-3'>
-            <div class='card card-dashboard bg-brand'>
-                <a href='/admin/users'>
-                    <div class='card-header bg-brand'>
-                        <b>NHÂN VIÊN</b>
-                    </div>
-                    <div class='card-body'>
-                        SỐ NHÂN VIÊN:  <%= @staffs %>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class='col-3'>
-            <div class='card card-dashboard bg-dark'>
-            <a href='/admin/customers'>
-                <div class='card-header bg-dark'>
-                    <b>KHÁCH HÀNG</b>
                 </div>
-                <div class='card-body'>
-                    SỐ KHÁCH HÀNG:  <%= @customers %>
+                <div class='col-3 col-xl-3 col-lg-9 col-md-12 col-sm-12'>
+                    <div class='card card-dashboard bg-success'>
+                        <a href='/admin/products'>
+                            <div class='card-header bg-success'>
+                            <b>SẢN PHẨM</b>
+                            </div>
+                            <div class='card-body'>
+                                SỐ SẢN PHẨM:  <%= @products %>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class='col-3 col-xl-3 col-lg-9 col-md-12 col-sm-12'>
+                    <div class='card card-dashboard bg-brand'>
+                        <a href='/admin/users'>
+                            <div class='card-header bg-brand'>
+                                <b>NHÂN VIÊN</b>
+                            </div>
+                            <div class='card-body'>
+                                SỐ NHÂN VIÊN:  <%= @staffs %>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class='col-3 col-xl-3 col-lg-9 col-md-12 col-sm-12'>
+                    <div class='card card-dashboard bg-dark'>
+                    <a href='/admin/customers'>
+                        <div class='card-header bg-dark'>
+                            <b>KHÁCH HÀNG</b>
+                        </div>
+                        <div class='card-body'>
+                            SỐ KHÁCH HÀNG:  <%= @customers %>
+                        </div>
+                    </div>
+                    </a>
                 </div>
             </div>
-            </a>
+            <div class='row'>
+            <div class='col-xl-4 col-lg-3 col-md-12 col-sm-12 col-4'>
+                <div class='card'>
+                    <div class='card-header'>
+                    THỐNG KÊ SẢN PHẨM
+                    </div>
+                    <div class='card-body'>
+                        <p>Tổng số sản phẩm <%= @total_product%></p>
+                        <canvas id="myChartOrder"></canvas>
+                        <script>
+                            const pie = document.getElementById('myChartOrder').getContext('2d');
+                            let total_order = <%= [*@products_dashboard].to_json %>
+                            const data = {
+                                labels: [
+                                    'Đã bán',
+                                    'Chưa bán',
+                                ],
+                                datasets: [{
+                                    label: 'THỐNG KÊ ĐƠN HÀNG',
+                                    data: total_order,
+                                    backgroundColor: [
+                                    'rgb(255, 99, 132)',
+                                    'rgb(54, 162, 235)',
+                                    ],
+                                    hoverOffset: 4
+                                }]
+                            };
+                            const myChartOrder = new Chart (pie, {
+                                type: 'pie',
+                                data: data,
+                            })
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-8">
+                <div class="card">
+                    <h5 class="card-header">DOANH THU THEO THÁNG
+                    </h5>
+                    <div class="card-body">
+                        <canvas id="myChart"></canvas>
+                            <script>
+                                let total_price = <%= [*@totalprice].to_json %>
+                                const ctx = document.getElementById('myChart').getContext('2d');
+                                const myChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+                                        datasets: [{
+                                            label: 'Đơn vị tinh (triệu đồng)',
+                                            data: total_price,
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(255, 206, 86, 0.2)',
+                                                'rgba(75, 192, 192, 0.2)',
+                                                'rgba(153, 102, 255, 0.2)',
+                                                'rgba(255, 159, 64, 0.2)',
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(255, 206, 86, 0.2)',
+                                                'rgba(75, 192, 192, 0.2)',
+                                                'rgba(153, 102, 255, 0.2)',
+                                                'rgba(255, 159, 64, 0.2)',
+                                            ],
+                                            borderColor: [
+                                                'rgba(255, 99, 132, 1)',
+                                                'rgba(54, 162, 235, 1)',
+                                                'rgba(255, 206, 86, 1)',
+                                                'rgba(75, 192, 192, 1)',
+                                                'rgba(153, 102, 255, 1)',
+                                                'rgba(255, 159, 64, 1)',
+                                                'rgba(255, 99, 132, 1)',
+                                                'rgba(54, 162, 235, 1)',
+                                                'rgba(255, 206, 86, 1)',
+                                                'rgba(75, 192, 192, 1)',
+                                                'rgba(153, 102, 255, 1)',
+                                                'rgba(255, 159, 64, 1)',
+                                            ],
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        }
+                                    }
+                                });
+                                </script>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </body>
+</html>
