@@ -1,10 +1,9 @@
 <div class='mx-4'>
     <h4>DANH SÁCH KHÁCH HÀNG
         <div class='float-right'>
-            <%= search_form_for @q, url: '/admin/customers' do |f| %>
-                <%= f.label :'Tên khách hàng' %>
-                <%= f.search_field :full_name_cont%>
-                <%= f.submit:'Tìm', :class => 'btn btn-primary'%>
+            <%= form_tag '/admin/customers', method: :get do %>
+                <%= text_field_tag "term", params[:term], placeholder: "Tìm kiếm..." %>
+                <%= submit_tag "Tìm kiếm" %>
             <% end %>
         </div>
     </h4>

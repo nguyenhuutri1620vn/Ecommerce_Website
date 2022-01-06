@@ -7,9 +7,11 @@ class ProductsController < ApplicationController
 
    
     def index
-        @products = Product.all
-        @q = Product.ransack(params[:q])
-        @products = @q.result.paginate(page: params[:page], per_page: 10).order('created_at DESC')
+        if params[:term]
+            @products = Product.search(params[:term]).paginate(page: params[:page], per_page: 10).order('created_at DESC')
+        else
+            @products = Product.all.paginate(page: params[:page], per_page: 10).order('created_at DESC')
+        end
     end
 
     def show

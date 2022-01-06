@@ -5,13 +5,21 @@ class UsersController < ApplicationController
 
   #show admin list
   def index
-    @q = User.ransack(params[:q])
-    @users = @q.result.paginate(page: params[:page], per_page: 10).list(true).order('created_at DESC')
+    if params[:term]
+      @users = User.search(params[:term]).paginate(page: params[:page], per_page: 10).list(true).order('created_at DESC')
+    else
+      @users = User.all.paginate(page: params[:page], per_page: 10).list(true).order('created_at DESC')
+    end
   end
   #show customer list
   def list_customer
-    @q = User.ransack(params[:q])
-    @customers = @q.result.paginate(page: params[:page], per_page: 10).list(false).order('created_at DESC')
+    # @q = User.ransack(params[:q])
+    # @customers = @q.result.paginate(page: params[:page], per_page: 10).list(false).order('created_at DESC')
+    if params[:term]
+      @customers = User.search(params[:term]).paginate(page: params[:page], per_page: 10).list(false).order('created_at DESC')
+    else
+      @customers = User.all.paginate(page: params[:page], per_page: 10).list(false).order('created_at DESC')
+    end
   end
   #show detail user
   def show

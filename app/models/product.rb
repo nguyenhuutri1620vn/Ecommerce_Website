@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  include PgSearch
+  pg_search_scope :search, against: [:name, :description]
+
   has_many :carts
   has_many :order_details
   belongs_to :category
