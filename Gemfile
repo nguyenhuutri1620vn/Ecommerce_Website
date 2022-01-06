@@ -6,6 +6,7 @@ ruby '3.0.0'
 gem 'bcrypt'
 gem "ransack"
 gem 'will_paginate', '~> 3.3'
+gem 'pg_search'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use sqlite3 as the database for Active Record
@@ -25,7 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'pg', '~> 1.2', '>= 1.2.3'
-gem 'devise', '~> 4.8'
+# gem 'devise', '~> 4.8'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

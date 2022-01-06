@@ -1,4 +1,10 @@
 class User < ApplicationRecord
+  include PgSearch
+  pg_search_scope :search, against: [:email, :full_name, :phone],
+  using: {
+    tsearch:{ prefix: true } 
+  }
+
   has_secure_password validations: false
 
   has_many :carts
