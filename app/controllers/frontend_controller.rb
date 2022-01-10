@@ -43,6 +43,7 @@ class FrontendController < ApplicationController
   end
 
   def updateprofile
+    @current_user.skip_validations = true
     if @current_user.update(update_params)
       redirect_to profile_path
     else
@@ -54,6 +55,7 @@ class FrontendController < ApplicationController
   end
 
   def updatepasscustomer
+    
     if @current_user.update(change_password)
       redirect_to profile_path
     else
@@ -63,11 +65,11 @@ class FrontendController < ApplicationController
   end
 
   def orderhistory
-    @orders = Order.where("user_id = #{current_user.id}")
+    @orders = Order.user(current_user.id)
   end
 
   def orderdetail
-    @orderdetails = OrderDetail.where("order_id = #{params[:id]}")
+    @orderdetails = OrderDetail.detail(params[:id])
   end
 
   private 

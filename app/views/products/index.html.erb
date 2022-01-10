@@ -23,18 +23,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% @products.each do |product| %>
-                    <tr>
-                        <td><%= product.id%></td>
-                        <td><%= product.category.name%></td>
-                        <td><%= link_to product.name, product_path(product.id) %></td>
-                        <td><%= product.quantity %></td>
-                        <td><%= product.price %></td>
-                        <td><%= product.status === true ? 'Hiện': 'Ẩn'%></td>
-                        <td class="text-center"><%= link_to "Sửa",  edit_product_path(product.id), class: 'btn btn-brand'%></td>
-                        <td class="text-center"> <%= link_to "Xoá", product_path(product.id), method: :delete,
-                                data: { confirm: "Xác nhận xoá thể loại ?" } , class: 'btn btn-secondary'%></td>
-                    </tr>
+                    <% if @products.length == 0%>
+                        <tr><td colspan="7" class="text-center">Trống</td></tr>
+                    <% else %>
+                        <% @products.each do |product| %>
+                            <tr>
+                                <td><%= product.id%></td>
+                                <td><%= product.category.name%></td>
+                                <td><%= link_to product.name, product_path(product.id) %></td>
+                                <td><%= product.quantity %></td>
+                                <td><%= product.price %></td>
+                                <td><%= product.status === true ? 'Hiện': 'Ẩn'%></td>
+                                <td class="text-center"><%= link_to "Sửa",  edit_product_path(product.id), class: 'btn btn-brand'%></td>
+                                <td class="text-center"> <%= link_to "Xoá", product_path(product.id), method: :delete,
+                                        data: { confirm: "Xác nhận xoá thể loại ?" } , class: 'btn btn-secondary'%></td>
+                            </tr>
+                        <% end %>
                     <% end %>
                 </tbody>
             </table>
