@@ -44,6 +44,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.skip_validations = true
     if @user.update(update_params)
       redirect_to user_path(params[:id])
     else

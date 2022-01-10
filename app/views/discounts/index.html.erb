@@ -21,8 +21,8 @@
                         <td><%= discount.id%></td>
                         <td><%= discount.name %></td>
                         <td><%= discount.percent %>%</td>
-                        <td><%= discount.starts_at%></td>
-                        <td><%= discount.ends_at%></td>
+                        <td><%= discount.starts_at.strftime('%d/%m/%Y')%></td>
+                        <td><%= discount.ends_at.strftime('%d/%m/%Y')%></td>
                         <td class="text-center"><%= link_to "Sửa",  edit_discount_path(discount.id), class: 'btn btn-brand'%></td>
                         <td class="text-center"> <%= link_to "Xoá", discount_path(discount.id), method: :delete,
                                 data: { confirm: "Xác nhận xoá thể loại ?" } , class: 'btn btn-secondary'%></td>

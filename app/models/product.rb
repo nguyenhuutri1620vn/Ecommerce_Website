@@ -7,6 +7,7 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :discount
   has_one_attached :image
+  after_destroy :log_destroy_action
 
   validates :category_id, presence: {message: 'Vui lòng chọn lọai sản phẩm'}
   validates :name , presence: {message: 'Vui lòng nhập tên sản phẩm'}
@@ -23,4 +24,9 @@ class Product < ApplicationRecord
   def self.selectcate(id)
     where("category_id = ?", "#{id}")
   end
+
+  def log_destroy_action
+    puts 'Article destroyed'
+  end
+  
 end

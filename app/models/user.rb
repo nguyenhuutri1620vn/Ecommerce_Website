@@ -9,9 +9,10 @@ class User < ApplicationRecord
 
   has_many :carts
   has_many :orders
+  attr_accessor :skip_validations
 
   validates :password, presence: {message: "Vui lòng nhập mật khẩu"}, confirmation: {message: 'Mật khẩu không trùng khớp'}, 
-  length: {minimum:6,  message: "Mật khẩu phải trên 6 kí tự"}, on: [:create, :updatepassword]
+  length: {minimum:6,  message: "Mật khẩu phải trên 6 kí tự"}, unless: :skip_validations
   validates :full_name, presence: {message: "Vui lòng nhập họ và tên"}, on: [:create, :update]
   validates :email, presence: {message: "Vui lòng nhập email"}, uniqueness: {message: "Email đã được đăng ký"}, 
   format: { with: URI::MailTo::EMAIL_REGEXP , message: "Email không đúng định dạng"} , on: [:create, :update]

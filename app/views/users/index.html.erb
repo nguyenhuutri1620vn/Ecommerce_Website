@@ -20,6 +20,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% if @users.length == 0%>
+                        <tr><td colspan="7" class="text-center">Trống</td></tr>
+                    <% else %>
                     <% @users.each do |user| %>
                             <tr>
                                 <td><%= user.id%></td>
@@ -31,6 +34,7 @@
                                 <td class="text-center"> <%= link_to "Xoá", user_path(user.id), method: :delete,
                                         data: { confirm: "Xác nhận xoá thể loại ?" } , class: 'btn btn-secondary'%></td>
                             </tr>
+                    <% end %>
                     <% end %>
                 </tbody>
             </table>
