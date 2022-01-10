@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :set_find_id , only: %i[ show edit update destroy changepassword updatepassword]
   before_action :is_admin?
   include ApplicationHelper
-
   #show admin list
   def index
     if params[:term]
@@ -77,7 +76,7 @@ class UsersController < ApplicationController
   end
 
   def update_params
-    params.require(:user).permit(:email, :address, :phone, :full_name)
+    params.permit(:email, :address, :phone, :full_name)
   end
 
   def change_password

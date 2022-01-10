@@ -7,6 +7,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Mã Đơn</th>
+                        <th scope="col">Tên khách hàng</th>
                         <th scope="col">Tổng Số Sản Phẩm</th>
                         <th scope="col">Thành Tiền</th>
                         <th scope="col">Ngày mua</th>
@@ -18,9 +19,10 @@
                     <% @orders.each do |order| %>
                             <tr>
                                 <td><%= order.id%></td>
+                                <td><%= order.user.full_name%></td>
                                 <td><%= order.quantity%></td>
                                 <td><%= order.total_price%></td>
-                                <td><%= order.created_at %></td>
+                                <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
                                 <td>Đã Duyệt</td>
                                 <td><%= link_to 'Chi tiết', order , :class=> 'btn btn-brand'%></td>
                             </tr>

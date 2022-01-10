@@ -2,6 +2,9 @@
 <div class="card">
   <div class="card-body">
       <%= form_with model: @user do |form| %>
+            <% @user.errors.messages_for(:password).each do |message| %>
+                <div class='text-danger'><%= message %></div>
+            <% end %>
         <div class="form-group">
           <%= form.label :'Email' %>
           <%= form.text_field :email , autofocus: true, class: "form-control", placeholder: 'Nhập email..', autocomplete: "email"%>

@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   get "/profile/editprofile", to: "frontend#editprofile"
   patch "/profile/editprofile", to: "frontend#updateprofile"
 
+  #order history
+  get "/profile/orderhistory", to: "frontend#orderhistory"
+  get "/profile/orderdetail/:id", to: "frontend#orderdetail"
+
   #logout
   get  "logout" ,to: "authentication#destroy"
 
@@ -41,8 +45,5 @@ Rails.application.routes.draw do
     get '/unapprove', to: 'orders#unapprove'
     get '/approve/:id', to: 'orders#approve'
     resources :dashboard, only: :index
-    # get '/dashboard', to: 
   end
-
-  
 end

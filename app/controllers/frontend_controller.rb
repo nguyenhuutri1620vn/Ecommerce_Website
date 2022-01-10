@@ -62,6 +62,14 @@ class FrontendController < ApplicationController
     end
   end
 
+  def orderhistory
+    @orders = Order.where("user_id = #{current_user.id}")
+  end
+
+  def orderdetail
+    @orderdetails = OrderDetail.where("order_id = #{params[:id]}")
+  end
+
   private 
   def user_params
     params.permit(:email, :password, :password_confirmation, :address, :phone, :full_name)
