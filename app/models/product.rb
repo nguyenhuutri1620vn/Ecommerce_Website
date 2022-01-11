@@ -26,7 +26,7 @@ class Product < ApplicationRecord
   end
 
   def log_destroy_action
-    puts 'Article destroyed'
+    puts 'Product destroyed'
   end
   
 end

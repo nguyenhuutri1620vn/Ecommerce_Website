@@ -44,6 +44,6 @@ Rails.application.routes.draw do
     resources :orders
     get '/unapprove', to: 'orders#unapprove'
     get '/approve/:id', to: 'orders#approve'
-    resources :dashboard, only: :index
+    resources :dashboard, only: :index 
   end
 end
