@@ -12,16 +12,17 @@
     <meta charset='utf-8' />
 </head>
 <body>
+        <h2  class='text-center bold'>Ecommerce Website</h2>
         <h4 class='text-center'>
             DOANH THU THEO NGÀY <%= Time.now.to_date.strftime("%d-%m-%Y") %>
         </h4>
-        <div >
+        <div class='mt-2'>
             <p>TỔNG HƠN ĐƠN: <%= @orderday%></p>
             <p>TỔNG SẢN PHẨM: <%= @products_detail_sold.count %></p>
             <p>TỔNG DOANH THU: <%= @order_total_money%> VND</p>
             <p>CÁC SẢN PHẨM ĐÃ BÁN: </p>
             <table class='table table-hover'>
-                <thead>
+                <thead class='table-dark'>
                     <td>Tên sản phẩm</td>
                     <td>Số lượng</td>
                     <td>Thành giá</td>
@@ -36,6 +37,9 @@
                     <% end %>
                 </tbody>
             </table>
+            <div class='mt-5'>
+                <p class='bold'>Ký và ghi rõ họ tên</p>
+            </div>
     </div>
 </body>
 

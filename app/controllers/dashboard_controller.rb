@@ -32,7 +32,7 @@ class DashboardController < ApplicationController
         respond_to do |format|
             format.html
             format.json 
-            format.pdf {render template: 'dashboard/reporte', pdf: 'Reporte'}
+            format.pdf {render template: 'dashboard/reporte', pdf: "DoanhThu_#{Time.now.strftime("%d%m%Y")}"}
         end
     end
 
