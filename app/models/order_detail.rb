@@ -1,7 +1,8 @@
 class OrderDetail < ApplicationRecord
-  belongs_to :order
+  belongs_to :cart
   belongs_to :product
-  validates :order, :product, presence: true
+  belongs_to :order, optional: true
+
 
   def self.detail(id)
     if id
@@ -10,5 +11,8 @@ class OrderDetail < ApplicationRecord
     else
       all
     end
+  end
+  def total_price
+    self.quantity * self.product.price
   end
 end

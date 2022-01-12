@@ -7,6 +7,16 @@ Rails.application.routes.draw do
   match "/500", to: "errors#interal_server_error", via: :all
   match "/403", to: "errors#authentication_error", via: :all
   
+  #cart
+  get 'carts', to: "carts#show", as: "cart"
+  delete 'carts/:id', to: "carts#destroy"
+
+  post 'order_details/:id/add', to: "order_details#add_quantity", as: "order_detail_add"
+  post 'order_details/:id/reduce', to: "order_details#reduce_quantity", as: "order_detail_reduce"
+  post 'order_details', to: "order_details#create"
+  get 'order_details/:id', to: "order_details#show", as: "order_detail"
+  delete 'order_details/:id', to: "order_details#destroy"
+
   get '/categories/:id', to: "frontend#select_category"
   #register
   get '/register', to: 'frontend#new'
