@@ -2,8 +2,7 @@
   <h2> <%= @product.name %></h2>
   <div class="row">
     <div class="col-lg-offset-3 col-lg-6">
-       <%= image_tag(@product.image, style: 'width:100%')%>
-    </div>
+       <%= image_tag(@product.image, style: 'width:100%')%>    </div>
     <div class='col'>
       <h3>Số lượng: <%= @product.quantity %></h3>
       <% days_str = (@product.discount.starts_at.to_date..@product.discount.ends_at.to_date).map{ |date| date.strftime("%Y-%m-%d") == Date.today.strftime("%Y-%m-%d")}%>
@@ -16,7 +15,7 @@
       <% end %>
       <h3>Mô tả:</h3>
       <h4><%= @product.description %></h4>
-      <button class='btn btn-success cart-button btn-block'><i class="fa fa-shopping-cart"></i> <b>Thêm vào giỏ hàng</b></button>
+      <%= button_to "Thêm vào giỏ hàng", order_details_path(:product_id => @product.id), class:'btn btn-success cart-button btn-block' %>
     </div>
   </div>
 </div>

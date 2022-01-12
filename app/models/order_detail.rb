@@ -1,8 +1,10 @@
 class OrderDetail < ApplicationRecord
-  belongs_to :order
+  belongs_to :cart
   belongs_to :product
-  validates :order, :product, presence: true
+  # validates :order, :product, presence: true
   after_destroy :log_destroy_action
+  belongs_to :order, optional: true
+
 
   def self.detail(id)
     if id
@@ -15,5 +17,9 @@ class OrderDetail < ApplicationRecord
 
   def log_destroy_action
     puts 'Orderdetail destroyed'
+  end
+  
+  def total_price
+    self.quantity * self.product.price
   end
 end
