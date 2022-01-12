@@ -23,7 +23,11 @@
               <div class="form-group">
                 <%= form.label :'Nhập lại mật khẩu' %>
                 <%= form.password_field :password_confirmation , class: "form-control", placeholder: 'Nhập lại mật khẩu..', autocomplete: "new-password" %>
+                <% @current_user.errors.messages_for(:password_confirmation).each do |message| %>
+                    <div class='text-danger'><%= message %></div>
+                <% end %>
               </div>
+
                 <% flash.each do |type, msg| %>                                                                                                                                                                                                                                                                                                                 
                     <div class="text-<%= type %>">
                         <%= msg %>

@@ -7,9 +7,9 @@ class FrontendController < ApplicationController
     @categories = Category.list(true)
     if params[:term]
       @products = Product.search(params[:term]).paginate(page: params[:page], per_page: 20).list(true).order('created_at DESC')
-  else
-      @products = Product.all.paginate(page: params[:page], per_page: 20).list(true).order('created_at DESC')
-  end
+    else
+        @products = Product.all.paginate(page: params[:page], per_page: 20).list(true).order('created_at DESC')
+    end
   end
 
   def show
@@ -34,8 +34,11 @@ class FrontendController < ApplicationController
 
   def select_category
     @categories = Category.list(true)
-    @q = Product.ransack(params[:q])
-    @products = @q.result.paginate(page: params[:page], per_page: 20).selectcate(params[:id]).list(true).order('created_at DESC')
+    if params[:term]
+      @products = Product.search(params[:term]).paginate(page: params[:page], per_page: 20).selectcate(params[:id]).list(true).order('created_at DESC')
+    else
+        @products = Product.all.paginate(page: params[:page], per_page: 20).selectcate(params[:id]).list(true).order('created_at DESC')
+    end
   end
 
   def editprofile

@@ -28,7 +28,12 @@ class DashboardController < ApplicationController
         @orderday = Order.where("EXTRACT(YEAR FROM created_at) = ?", year).where("EXTRACT(MONTH FROM created_at) = ?", month).where("EXTRACT(day FROM created_at) = ?",day).count
         @order_total_money = Order.where("EXTRACT(YEAR FROM created_at) = ?", year).where("EXTRACT(MONTH FROM created_at) = ?", month).where("EXTRACT(day FROM created_at) = ?",day).sum('total_price')
         @products_detail_sold = OrderDetail.where("EXTRACT(YEAR FROM created_at) = ?", year).where("EXTRACT(MONTH FROM created_at) = ?", month).where("EXTRACT(day FROM created_at) = ?",day)
-
+        
+        respond_to do |format|
+            format.html
+            format.json 
+            format.pdf {render template: 'dashboard/reporte', pdf: 'Reporte'}
+        end
     end
 
 end

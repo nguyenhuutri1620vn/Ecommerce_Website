@@ -19,7 +19,7 @@
     <h2 >
         SẢN PHẨM
          <div class='float-right'>
-             <%= form_tag '/frontend', method: :get do %>
+            <%= form_tag '/frontend', method: :get do %>
                 <%= text_field_tag "term", params[:term], placeholder: "Tìm kiếm..." %>
                 <%= submit_tag "Tìm kiếm" %>
             <% end %>

@@ -105,7 +105,6 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
-    pdfkit (0.8.5)
     pg (1.2.3)
     pg_search (2.3.5)
       activerecord (>= 5.2)
@@ -152,8 +151,6 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.1.1)
-    render_anywhere (0.0.12)
-      rails (>= 3.0.7)
     rexml (3.2.5)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
@@ -203,6 +200,8 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    wicked_pdf (2.1.0)
+      activesupport
     will_paginate (3.3.1)
     wkhtmltopdf-binary (0.12.6.5)
     xpath (3.2.0)
@@ -219,13 +218,11 @@ DEPENDENCIES
   capybara (>= 3.26)
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  pdfkit
   pg (~> 1.2, >= 1.2.3)
   pg_search
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
-  render_anywhere
   sass-rails (>= 6)
   selenium-webdriver
   spring
@@ -234,6 +231,7 @@ DEPENDENCIES
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
+  wicked_pdf
   will_paginate (~> 3.3)
   wkhtmltopdf-binary
 
