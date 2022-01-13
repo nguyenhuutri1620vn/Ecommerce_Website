@@ -164,12 +164,16 @@
                     <td>Thành giá</td>
                 </thead>
                 <tbody>
-                    <% @products_detail_sold.each do |product|%>
-                        <tr>
-                            <td><%= product.product.name %></td>
-                            <td><%= product.quantity %></td>
-                            <td><%= product.price %></td>
-                        </tr>
+                    <% if @products_detail_sold.length == 0 %>
+                        <tr><td colspan ='3' class='text-center'>Trống</td></tr>
+                        <%else%>
+                        <% @products_detail_sold.each do |product|%>
+                            <tr>
+                                <td><%= product.product.name %></td>
+                                <td><%= product.quantity %></td>
+                                <td><%= product.price %></td>
+                            </tr>
+                        <% end %>
                     <% end %>
                 </tbody>
             </table>

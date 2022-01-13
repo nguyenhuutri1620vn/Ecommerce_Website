@@ -19,7 +19,7 @@
         <div class='mt-2'>
             <p>TỔNG HƠN ĐƠN: <%= @orderday%></p>
             <p>TỔNG SẢN PHẨM: <%= @products_detail_sold.count %></p>
-            <p>TỔNG DOANH THU: <%= @order_total_money%> VND</p>
+            <p>TỔNG DOANH THU: <%= number_to_currency(@order_total_money, unit: "vn₫",format: "%n %u")%></p>
             <p>CÁC SẢN PHẨM ĐÃ BÁN: </p>
             <table class='table table-hover'>
                 <thead class='table-dark'>
@@ -28,12 +28,16 @@
                     <td>Thành giá</td>
                 </thead>
                 <tbody>
-                    <% @products_detail_sold.each do |product|%>
-                        <tr>
-                            <td><%= product.product.name %></td>
-                            <td><%= product.quantity %></td>
-                            <td><%= product.price %></td>
-                        </tr>
+                     <% if @products_detail_sold.length == 0 %>
+                        <tr><td colspan ='3' class='text-center'>Trống</td></tr>
+                    <%else%>
+                        <% @products_detail_sold.each do |product|%>
+                            <tr>
+                                <td><%= product.product.name %></td>
+                                <td><%= product.quantity %></td>
+                                <td><%= number_to_currency(product.price, unit: "vn₫",format: "%n %u") %></td>
+                            </tr>
+                        <% end %>
                     <% end %>
                 </tbody>
             </table>

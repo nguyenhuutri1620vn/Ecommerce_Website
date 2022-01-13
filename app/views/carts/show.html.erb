@@ -32,7 +32,7 @@
                     <%= image_tag f.product.image, alt: 'Image', class:'product-image'%>
                 </td>
                 <td><h6><%= f.product.name%></h6></td>
-                <td><b><%= number_to_currency(f.product.price, unit: "₫",format: "%n %u")%></b></td>
+                <td><b><%= number_to_currency(f.product.price, unit: "vn₫",format: "%n %u")%></b></td>
                 <td> 
                     <div class="btn-group"> 
                         <%= button_to "-", order_detail_reduce_path(:id => f),class: 'cart-btn-quantity', method: :post %>
@@ -42,7 +42,7 @@
                          <%= button_to "+", order_detail_add_path(:id => f),class: 'cart-btn-quantity', method: :post %>
                     </div>
                 </td>
-                 <td><%= number_to_currency(f.total_price, unit:"₫",format: "%n %u")%></b></td>
+                 <td><%= number_to_currency(f.total_price, unit:"vn₫",format: "%n %u")%></b></td>
                 <td>
                     <%= button_to "Xóa", order_detail_path(:id => f),class: 'btn btn-outline-danger btn-xs', method: :delete %>
                 </td>
@@ -60,7 +60,7 @@
                 <div> 
                 <%= button_to "Tiếp tục mua hàng" , frontend_index_path, class: 'btn btn-sm bg-light border border-dark'%>
                  </div>
-                <div class="px-md-0 px-1" id="footer-font"> <b class="pl-md-4">Tiền hàng:<span class="pl-md-4"><%= number_to_currency(@cart.sub_total, unit: "₫",format: "%n %u")%></span></b> </div>
+                <div class="px-md-0 px-1" id="footer-font"> <b class="pl-md-4">Tiền hàng:<span class="pl-md-4"><%= number_to_currency(@cart.sub_total, unit: "vn₫",format: "%n %u")%></span></b> </div>
                 <div> <button class="btn btn-sm bg-dark text-white px-lg-5 px-3">Đặt hàng</button> </div>
             </div>
         </div>
