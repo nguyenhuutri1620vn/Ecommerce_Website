@@ -1,0 +1,13 @@
+<%= link_to "Danh sách sản phẩm", products_path, class: 'btn btn-secondary float-end' %>
+<h4>Chi tiết sản phẩm <%= @product.name %>
+</h4>
+<p>Số lượng: <%= @product.quantity %></p>
+<p>Giá: <%= number_to_currency(@product.price, unit: "vn₫",format: "%n %u") %></p>
+<p>Giá đã giảm: <%= number_to_currency(@product.sell_price, unit: "vn₫",format: "%n %u") %></p>
+<p>Mô tả: <%= @product.description %></p>
+<p>Hình ảnh: </p>
+<% if @product.image.attached? %>
+    <div class='image-product my-2'> 
+        <%= image_tag(@product.image, style: 'width:100%')%>
+    </div> 
+<% end %>

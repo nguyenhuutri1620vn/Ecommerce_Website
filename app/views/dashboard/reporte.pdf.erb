@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ecommerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <meta charset='utf-8' />
+</head>
+<body>
+        <h2  class='text-center bold'>Ecommerce Website</h2>
+        <h4 class='text-center'>
+            DOANH THU THEO NGÀY <%= Time.now.to_date.strftime("%d-%m-%Y") %>
+        </h4>
+        <div class='mt-2'>
+            <p>TỔNG HƠN ĐƠN: <%= @orderday%></p>
+            <p>TỔNG SẢN PHẨM: <%= @products_detail_sold.count %></p>
+            <p>TỔNG DOANH THU: <%= number_to_currency(@order_total_money, unit: "vn₫",format: "%n %u")%></p>
+            <p>CÁC SẢN PHẨM ĐÃ BÁN: </p>
+            <table class='table table-hover'>
+                <thead class='table-dark'>
+                    <td>Tên sản phẩm</td>
+                    <td>Số lượng</td>
+                    <td>Thành giá</td>
+                </thead>
+                <tbody>
+                     <% if @products_detail_sold.length == 0 %>
+                        <tr><td colspan ='3' class='text-center'>Trống</td></tr>
+                    <%else%>
+                        <% @products_detail_sold.each do |product|%>
+                            <tr>
+                                <td><%= product.product.name %></td>
+                                <td><%= product.quantity %></td>
+                                <td><%= number_to_currency(product.price, unit: "vn₫",format: "%n %u") %></td>
+                            </tr>
+                        <% end %>
+                    <% end %>
+                </tbody>
+            </table>
+            <div class='mt-5'>
+                <p class='bold'>Ký và ghi rõ họ tên</p>
+            </div>
+    </div>
+</body>
+
+</html>

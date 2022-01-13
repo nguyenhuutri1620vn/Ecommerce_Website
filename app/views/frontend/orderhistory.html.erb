@@ -1,0 +1,110 @@
+<div class="container">
+    <div class="menu">
+        <strong>MENU</strong>
+        <ul>
+            <li><a href="/profile">Thông tin cá nhân</a></li>
+            <li><a href="/profile/change-pass-customer"> Đổi mật khẩu </a></li>
+            <li><a href="/profile/orderhistory"> Lịch sử đơn hàng </a></li>
+        </ul>
+    </div>
+    <div class="content" >
+        <h1>Lịch sử đơn hàng</h1>
+        <div class="card mt-2">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Mã Đơn</th>
+                        <th scope="col">Tổng Số Sản Phẩm</th>
+                        <th scope="col">Thành Tiền</th>
+                        <th scope="col">Ngày mua</th>
+                        <th scope="col">Trạng Thái</th>
+                        <th scope="col">Thao Tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @orders.each do |order| %>
+                            <tr>
+                                <td><%= order.id%></td>
+                                <td><%= order.quantity%></td>
+                                <td><%= number_to_currency(order.total_price, unit: "vn₫",format: "%n %u")%></td>
+                                <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
+                                <td><%= order.status === 1 ? "Đã duyệt": "Chưa duyệt"%></td>
+                                <td><%= link_to 'Chi tiết', "/profile/orderdetail/#{order.id}" , :class=> 'btn btn-brand'%></td>
+                            </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>
+ <style>
+        h1{
+            padding-top: 10px;
+        }
+
+        .container{
+            
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        strong{
+            padding-left: 10px;
+        }
+        .menu{
+            width: 200px;
+            float:left;
+            
+            width: 200px;
+            height: 400px;
+            
+            padding-top: 10px;
+            
+            background-color: rgb(192, 192, 211);
+        }
+        h2{
+            color: rgb(36, 15, 56);
+            padding-top: 10px;
+            font-size: 20px;
+            }
+
+        .content{
+            
+            float:left;
+            border: 2px;
+            padding-left: 20px;
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 650px;
+            margin-bottom: 20px;
+        }
+        .menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        }
+        .menu ul li {
+        line-height: 30px;
+        }
+        .menu ul li a{
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        padding-left: 10px;
+        font-size: 16px;
+        }
+            
+        .menu ul li a:hover{
+        font-weight: bold;
+        }
+
+        p{
+            font-size: 16px;
+            color: black;
+        }
+        .menu strong{
+        font-size: 20px; 
+        padding-left: 10px;  
+        color: black;      
+        }
+</style>

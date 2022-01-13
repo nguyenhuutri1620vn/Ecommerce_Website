@@ -1,0 +1,75 @@
+<div class="card">
+  <div class="card-body">
+      <%= form_with model: @product do |form| %>
+        <div class="form-group">
+          <%= form.label :'Tên sản phẩm' %>
+          <%= form.text_field :name , autofocus: true, class: "form-control"%>
+          <% @product.errors.messages_for(:name).each do |message| %>
+            <div class='text-danger'><%= message %></div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :'Loại sản phẩm' %>
+            <%= form.select :category_id,  @category.map{|c| [c.name, c.id]}, {}, { class: "form form-group form-control" }%>
+            <% @product.errors.messages_for(:category_id).each do |message| %>
+                <div class='text-danger'><%= message %></div>
+            <% end %>
+        </div>
+
+        <div class="form-group">
+            <%= form.label :'Mã giảm giá' %>
+            <%= form.select :discount_id, @discount.map{|c| [c.name, c.id]}, {}, { class: "form form-group form-control" } %> 
+            <% @product.errors.messages_for(:discount_id).each do |message| %>
+                <div class='text-danger'><%= message %></div>
+            <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :'Mô tả' %>
+          <%= form.text_field :description, class: "form-control"%>
+          <% @product.errors.messages_for(:description).each do |message| %>
+            <div class='text-danger'><%= message %></div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :'Giá bán' %>
+          <%= form.text_field :price , class: "form-control"%>
+          <% @product.errors.messages_for(:price).each do |message| %>
+            <div class='text-danger'><%= message %></div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :'Số lượng' %>
+          <%= form.text_field :quantity , autofocus: true, class: "form-control"%>
+          <% @product.errors.messages_for(:quantity).each do |message| %>
+            <div class='text-danger'><%= message %></div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :'Hình ảnh' %>
+          <%= form.file_field :image , class:'form-control w-25'%>
+            <% if product.image.attached? %>
+              <div class='image-product my-2'> 
+                  <%= image_tag(product.image, style: 'width:100%')%>
+              </div> 
+            <% end %>
+          <% @product.errors.messages_for(:image).each do |message| %>
+            <div class='text-danger'><%= message %></div>
+          <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= form.check_box :status, class:'mt-2' %>
+          <%= form.label :Hiện%>
+        </div>
+
+        <div>
+          <%= form.submit :Thêm, class: 'btn btn-primary'%>
+        </div>
+      <% end %>
+  </div>
+</div>

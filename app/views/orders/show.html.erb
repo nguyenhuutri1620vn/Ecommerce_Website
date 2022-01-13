@@ -1,0 +1,29 @@
+<%= link_to "< Đơn Hàng", url_for(:back) , class: 'btn btn-secondary mb-2' %>
+<div class='card'>
+    <div class='card-header'>Mã Đơn Hàng: <b><%= @order.id %></b></div>
+    <div class='card-body'>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Mã Sản Phẩm</th>
+                    <th scope="col">Tên Sản Phẩm</th>
+                    <th scope="col">Số Lượng</th>
+                    <th scope="col">Đơn Giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% sum = 0 %>
+                <% @orders.each do |order| %>
+                    <tr>
+                        <td><%= order.product_id%></td>
+                        <td><%= order.product.name%></td>
+                        <td><%= order.quantity%></td>
+                        <td><%= number_to_currency(order.price, unit: "vn₫",format: "%n %u")%></td>
+                        <% sum += order.price %>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>        
+    </div>
+    <h1 style="text-align: right;">Thành Tiền: <%= number_to_currency(sum, unit: "vn₫",format: "%n %u") %></h1>
+</div>

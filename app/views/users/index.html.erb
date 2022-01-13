@@ -1,0 +1,46 @@
+<div class='mx-4'>
+    <h4>DANH SÁCH QUẢN TRỊ VIÊN
+        <div class='float-right'>
+            <%= form_tag users_path, method: :get do %>
+                <%= text_field_tag "term", params[:term], placeholder: "Tìm kiếm..." %>
+                <%= submit_tag "Tìm kiếm" %>
+            <% end %>
+        </div>
+    </h4>
+    <div class="card mt-2">
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Họ và tên</th>
+                        <th scope="col">Số điện thoại</th>
+                        <th colspan="3" class="text-center">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if @users.length == 0%>
+                        <tr><td colspan="7" class="text-center">Trống</td></tr>
+                    <% else %>
+                    <% @users.each do |user| %>
+                            <tr>
+                                <td><%= user.id%></td>
+                                <td><%= link_to user.email, user_path(user.id) %></td>
+                                <td><%= user.full_name %></td>
+                                <td><%= user.phone%></td>
+                                <td class="text-center"><%= link_to 'Cập nhật',  edit_user_path(user.id), class: 'btn btn-brand'%></td>
+                                <td class="text-center"><%= link_to 'Đổi mật khẩu',  "/admin/users/#{user.id}/change-password", class: 'btn btn-dark'%></td>
+                                <td class="text-center"> <%= link_to "Xoá", user_path(user.id), method: :delete,
+                                        data: { confirm: "Xác nhận xoá thể loại ?" } , class: 'btn btn-secondary'%></td>
+                            </tr>
+                    <% end %>
+                    <% end %>
+                </tbody>
+            </table>
+            <div class="digg_pagination float-right mt-3">
+                <%= will_paginate @users  %>
+            </div>
+        </div>
+    </div>
+</div>

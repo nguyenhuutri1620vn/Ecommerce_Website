@@ -1,0 +1,52 @@
+Arguments: 
+  /usr/bin/node /usr/local/bin/yarn add sweetalert2l
+
+PATH: 
+  /home/nguyenhuutri1620vn/.rbenv/bin:/home/nguyenhuutri1620vn/.rbenv/bin:/home/nguyenhuutri1620vn/.rvm/gems/ruby-3.0.0/bin:/home/nguyenhuutri1620vn/.rvm/gems/ruby-3.0.0@global/bin:/home/nguyenhuutri1620vn/.rvm/rubies/ruby-3.0.0/bin:/home/nguyenhuutri1620vn/.rvm/gems/ruby-3.0.0/bin:/home/nguyenhuutri1620vn/.rvm/gems/ruby-3.0.0@global/bin:/home/nguyenhuutri1620vn/.rvm/rubies/ruby-3.0.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/share/rvm/bin:/home/nguyenhuutri1620vn/.rvm/bin:/home/nguyenhuutri1620vn/.rvm/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  10.19.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/sweetalert2l: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:67029:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140883:22)
+      at Request.emit (events.js:198:13)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141855:10)
+      at Request.emit (events.js:198:13)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141777:12)
+      at Object.onceWrapper (events.js:286:20)
+      at IncomingMessage.emit (events.js:203:15)
+      at endReadableNT (_stream_readable.js:1145:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+npm manifest: 
+  {
+    "name": "ecommerce-website",
+    "private": true,
+    "dependencies": {
+      "@rails/actioncable": "^6.0.0",
+      "@rails/activestorage": "^6.0.0",
+      "@rails/ujs": "^6.0.0",
+      "@rails/webpacker": "5.4.3",
+      "turbolinks": "^5.2.0",
+      "webpack": "^4.46.0",
+      "webpack-cli": "^3.3.12"
+    },
+    "version": "0.1.0",
+    "devDependencies": {
+      "webpack-dev-server": "^3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

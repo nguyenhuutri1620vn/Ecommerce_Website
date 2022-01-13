@@ -1,0 +1,86 @@
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <%= image_tag("banner1.jpg", :alt => "First slide", :class => "d-block w-100 img-banner") %>
+        </div>
+        <div class="carousel-item">
+            <%= image_tag("banner2.png", :alt => "First slide", :class => "d-block w-100 img-banner") %>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>   </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>  </a>
+</div>
+<div class='product mt-2'>
+    <div class="container">
+    <h2 >
+        SẢN PHẨM
+         <div class='float-right'>
+            <%= form_tag '/frontend', method: :get do %>
+                <%= text_field_tag "term", params[:term], placeholder: "Tìm kiếm..." %>
+                <%= submit_tag "Tìm kiếm", class: 'btn btn-primary' %>
+            <% end %>
+        </div>  
+          
+    </h2>
+    <div class='row'>
+        <div class='col-3'>
+            <div class='card card-filter'>
+                <div class='card-header'>
+                    <h3>Loại sản phẩm</h3>
+                </div>
+                <div class='card-body'>
+                    <a href="/" ><h5 class='my-2'>Tất cả</h5></a>
+                    <% @categories.each do |category| %>
+                        <a href="/categories/<%= category.id %>" ><h5 class='my-2'> <%= category.name %></h5></a>
+                    <%end%>
+                </div>
+            </div>
+            <a href='/carts' class='btn btn-primary w-100'>
+                GIỎ HÀNG
+                <i class="fas fa-shopping-cart icon-cart"></i>
+            </a>
+        </div>
+        <div class='col'>
+            <div class="row g-1">
+            <% if @products.length == 0 %>
+                <h4>Không tìm thấy sản phẩm</h4>
+            <% else %>
+                <% @products.each do |product| %>
+                    <div class="col-md-4">
+                        <a href="/product/<%=product.id%>/detail" >
+                            <div class="card p-3 card-product">
+                                <div class="text-center"> 
+                                <%= image_tag product.image, alt: 'Image', class:'product-image'%>
+                                </div>
+                                <% days_str = (product.discount.starts_at.to_date..product.discount.ends_at.to_date).map{ |date| date.strftime("%Y-%m-%d") == Date.today.strftime("%Y-%m-%d")}%>
+                                <% sell_day = days_str.detect{|e| e == true}  %>
+                                <% if sell_day == true %>
+                                    <div class="product-details"> <span class="font-weight-bold d-block lineThrough"><%= number_to_currency(product.price, unit: "vn₫",format: "%n %u") %></span>
+                                    <div>Sale từ <p v class='text-secondary'><%= product.discount.starts_at.strftime('%d/%m/%Y')%> - <%= product.discount.ends_at.strftime('%d/%m/%Y')%></p></div>
+                                    <span class="font-weight-bold d-block text-danger">Chỉ còn: <%= number_to_currency(product.sell_price, unit: "vn₫",format: "%n %u") %> </span>
+                                <% else %>
+                                
+                                <div class="product-details"> <span class="font-weight-bold d-block"><%= number_to_currency(product.price, unit: "vn₫",format: "%n %u") %></span>
+                                <% end %>
+                                <span><%= product.name %></span>
+                                   
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+        <div class="digg_pagination float-right mt-3 mb-5">
+            <%= will_paginate @products %>
+        </div>
+        </div>
+    </div>
+    
+       
+    </div>
+</div>
