@@ -85,48 +85,36 @@
 #   Product.create!( category_id: category_id,name: name, price: price, description: description, status: status, quantity: quantity, discount_id: discount_id )
 # end
 
-user3 = User.find_by(email: "vuhuy@mail.com").id
-user4 = User.find_by(email: "leha@mail.com").id
-user5 = User.find_by(email: "dangkhoa@mail.com").id
-order_list = [
-  [user3, 3, 1, 49597100],
-  [user4, 2, 1, 3399800],
-  [user5, 1, 0, 5354150],
-]
-order_list.each do |user_id,quantity,status,total_price|
-  Order.create!( user_id: user_id,quantity: quantity, status: status, total_price: total_price )
-end
+# user3 = User.find_by(email: "tan@mail.com").id
+# order_list = [
+#   [user3, 3, 1, 49597100],
+# ]
+# order_list.each do |user_id,quantity,status,total_price|
+#   Order.create!( user_id: user_id,quantity: quantity, status: status, total_price: total_price )
+# end
 
-product1 = Product.find_by(name: "Laptop Fujitsu CH").id
-product2 = Product.find_by(name: "Laptop MSI Gaming 2").id
-product3 = Product.find_by(name: "iPhone 11 64GB").id
-product4 = Product.find_by(name: "Samsung Galaxy A22").id
-order1 = Order.find_by(total_price: 49597100).id
-order2 = Order.find_by(total_price: 3399800).id
-order3 = Order.find_by(total_price: 5354150).id
-order_details_list = [
-  [order1, product1, 47998000, 2],
-  [order1, product2, 23999000, 1],
-  [order2, product3, 33998000, 2],
-  [order3, product4, 6299000, 1],
-]
-order_details_list.each do |order_id,product_id,price,quantity|
-  OrderDetail.create!( order_id: order_id,product_id: product_id, price:price, quantity: quantity )
-end
-
-# user1 = User.find_by(email: "dangkhoa@mail.com").id
-# user2 = User.find_by(email: "vanloi@mail.com").id
-# user3 = User.find_by(email: "quangly@mail.com").id
 # product1 = Product.find_by(name: "Laptop Fujitsu CH").id
 # product2 = Product.find_by(name: "Laptop MSI Gaming 2").id
 # product3 = Product.find_by(name: "iPhone 11 64GB").id
 # product4 = Product.find_by(name: "Samsung Galaxy A22").id
-# cart_list = [
-#   [user1, product1, 2],
-#   [user1, product2, 1],
-#   [user2, product3, 2],
-#   [user3, product4, 1],
+# order1 = Order.find_by(total_price: 49597100).id
+# order2 = Order.find_by(total_price: 3399800).id
+# order3 = Order.find_by(total_price: 5354150).id
+# order_details_list = [
+#   [order1, 163, 47998000, 2],
+#   [order1, 164, 23999000, 1],
+#   [order2, 161, 33998000, 2],
+#   [order3, 162, 6299000, 1],
 # ]
-# cart_list.each do |user_id,product_id,quantity|
-#   Cart.create!( user_id: user_id,product_id: product_id, quantity: quantity )
+# order_details_list.each do |order_id,product_id,price,quantity|
+#   OrderDetail.create!( order_id: order_id,product_id: product_id, price:price, quantity: quantity )
 # end
+
+
+cart_list = [
+  [1],
+  [1],
+]
+cart_list.each do |user_id|
+  Cart.create!( user_id: user_id )
+end

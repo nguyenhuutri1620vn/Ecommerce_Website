@@ -48,7 +48,9 @@
                     <div class="col-md-4">
                         <a href="/product/<%=product.id%>/detail" >
                             <div class="card p-3 card-product">
-                                <div class="text-center"> <%= image_tag product.image, alt: 'Image', class:'product-image'%></div>
+                                <div class="text-center"> 
+                                <%= image_tag product.image, alt: 'Image', class:'product-image'%>
+                                </div>
                                 <% days_str = (product.discount.starts_at.to_date..product.discount.ends_at.to_date).map{ |date| date.strftime("%Y-%m-%d") == Date.today.strftime("%Y-%m-%d")}%>
                                 <% sell_day = days_str.detect{|e| e == true}  %>
                                 <% if sell_day == true %>

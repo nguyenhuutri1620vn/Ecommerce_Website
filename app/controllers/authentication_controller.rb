@@ -25,5 +25,6 @@ class AuthenticationController < ApplicationController
     # logout
     def destroy
         log_out
+        redirect_to frontend_index_path
     end
 end
