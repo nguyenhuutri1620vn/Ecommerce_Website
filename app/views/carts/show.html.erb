@@ -3,43 +3,48 @@
         <div class="col-lg-10 col-12 pt-3">
             <div class="d-flex flex-column pt-4">
                 <div>
-                    <h5 class="text-uppercase font-weight-normal">shopping bag</h5>
-                </div>
-                <div class="font-weight-normal"><%= @cart.order_details.size %> items</div>
-            </div>
-            <div class="d-flex flex-row px-lg-5 mx-lg-5 mobile" id="heading">
-                <div class="px-lg-5 mr-lg-5" id="produc">PRODUCTS</div>
-                <div class="px-lg-5 ml-lg-5" id="prc">PRICE</div>
-                <div class="px-lg-5 ml-lg-1" id="quantity">QUANTITY</div>
-                <div class="px-lg-5 ml-lg-3" id="total">TOTAL</div>
-            </div>
-        <% @cart.order_details.each do |f| %>
-            <div class="d-flex flex-row justify-content-between align-items-center pt-lg-4 pt-2 pb-3 border-bottom mobile">
-                <div class="d-flex flex-row align-items-center">
+                    <h5 class="text-uppercase font-weight-normal"><b>Giỏ hàng của Bạn</b></h5>
                     <div>
-                        <%= image_tag(f.product.image, style: 'width:100px;height:100px')%>                       
-                    </div>
-                    <div class="d-flex flex-column pl-md-3 pl-1">
-                        <div>
-                            <h6><%= f.product.name%></h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="pl-md-0 pl-1"><b><%= f.product.price%>VND</b></div>
-                <div class="pl-md-0 pl-2"> 
-                    <%= button_to "+", order_detail_add_path(:id => f),class: ' text-secondary', method: :post %>
-                        <span class="px-md-3 px-1">
-                            <%= f.quantity%>
-                        </span>
-                    <%= button_to "-", order_detail_reduce_path(:id => f),class: 'text-secondary', method: :post %>
-
-                 </div>
-                <div class="pl-md-0 pl-1"><%= f.total_price%>VND</b></div>
-                <div class="pl-md-0 pl-1 text-right">
-                    <%= button_to "Xoa", order_detail_path(:id => f),class: 'btn btn-outline-danger btn-xs', method: :delete %>
+                        <%= button_to "Xóa giỏ hàng", cart_path,class: 'btn btn-sm bg-light px-lg-4 px-3', method: :delete, data: {confirm: "Bạn có muốn xóa giỏ hàng?"} %>
+                    </div> 
                 </div>
             </div>
+        <table class="table table-borderless">
+            <thead class="thead-dark">
+            <tr>
+                <th> </th>
+                <th>Sản phẩm</th>
+                <th>Giá tiền </th>
+                <th>Số lượng</th>
+                <th>Tổng</th>
+                <th> </th>
+            </tr>
+            </thead>
+            <tbody>
+        <% @cart.order_details.each do |f| %>
+            <tr>
+                <td>
+                    <%= image_tag f.product.image, alt: 'Image', class:'product-image'%>
+                </td>
+                <td><h6><%= f.product.name%></h6></td>
+                <td><b><%= number_to_currency(f.product.price, unit: "₫",format: "%n %u")%></b></td>
+                <td> 
+                    <div class="btn-group"> 
+                        <%= button_to "-", order_detail_reduce_path(:id => f),class: 'btn btn-light btn-sm', method: :post %>
+                            <span class="px-md-3 px-1">
+                                <%= f.quantity%>
+                            </span>
+                         <%= button_to "+", order_detail_add_path(:id => f),class: 'btn btn-light btn-sm', method: :post %>
+                    </div>
+                </td>
+                 <td><%= number_to_currency(f.total_price, unit:"₫",format: "%n %u")%></b></td>
+                <td>
+                    <%= button_to "Xóa", order_detail_path(:id => f),class: 'btn btn-outline-danger btn-xs', method: :delete %>
+                </td>
+            </tr>
         <% end%>
+            </tbody>
+        </table>
         </div> 
 </div>
 <div class="container bg-light rounded-bottom py-4" style="margin-bottom:50px;" id="zero-pad">
@@ -47,10 +52,10 @@
         <div class="col-lg-10 col-12">
             <div class="d-flex justify-content-between align-items-center">
                 <div> 
-                <%= button_to "GO BACK" , frontend_index_path, class: 'btn btn-sm bg-light border border-dark'%>
+                <%= button_to "Tiếp tục mua hàng" , frontend_index_path, class: 'btn btn-sm bg-light border border-dark'%>
                  </div>
-                <div class="px-md-0 px-1" id="footer-font"> <b class="pl-md-4">SUBTOTAL<span class="pl-md-4"><%= @cart.sub_total%>VND</span></b> </div>
-                <div> <button class="btn btn-sm bg-dark text-white px-lg-5 px-3">CONTINUE</button> </div>
+                <div class="px-md-0 px-1" id="footer-font"> <b class="pl-md-4">Tiền hàng:<span class="pl-md-4"><%= number_to_currency(@cart.sub_total, unit: "₫",format: "%n %u")%></span></b> </div>
+                <div> <button class="btn btn-sm bg-dark text-white px-lg-5 px-3">Đặt hàng</button> </div>
             </div>
         </div>
     </div>
