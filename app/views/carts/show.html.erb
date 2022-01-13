@@ -61,7 +61,7 @@
                 <%= button_to "Tiếp tục mua hàng" , frontend_index_path, class: 'btn btn-sm bg-light border border-dark'%>
                  </div>
                 <div class="px-md-0 px-1" id="footer-font"> <b class="pl-md-4">Tiền hàng:<span class="pl-md-4"><%= number_to_currency(@cart.sub_total, unit: "vn₫",format: "%n %u")%></span></b> </div>
-                <div> <button class="btn btn-sm bg-dark text-white px-lg-5 px-3">Đặt hàng</button> </div>
+                <%= button_to "Đặt hàng", ordersuccessfully_path, :class => 'btn btn-sm bg-dark text-white px-lg-5 px-3', method: :post%>
             </div>
         </div>
     </div>

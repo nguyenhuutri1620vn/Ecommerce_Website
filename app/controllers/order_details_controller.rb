@@ -15,6 +15,7 @@ class OrderDetailsController < ApplicationController
             @order_detail.quantity = 1
         end     
         @order_detail.price = @order_detail.quantity * @order_detail.product.price
+        @order_detail.order_id = Order.maximum(:id).next
         @order_detail.save
         redirect_to cart_path    
     end

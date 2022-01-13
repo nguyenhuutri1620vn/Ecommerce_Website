@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get 'order_details/:id', to: "order_details#show", as: "order_detail"
   delete 'order_details/:id', to: "order_details#destroy"
 
+  post '/ordersuccessfully', to: 'frontend#createorder'
+  # post '/ordersuccessfully', to: 'frontend#addorderdetail'
+
   get '/categories/:id', to: "frontend#select_category"
   #register
   get '/register', to: 'frontend#new'
@@ -40,6 +43,7 @@ Rails.application.routes.draw do
   get "/profile/orderhistory", to: "frontend#orderhistory"
   get "/profile/orderdetail/:id", to: "frontend#orderdetail"
 
+  get '/thankyou', to: 'frontend#thankyou'
   #logout
   get  "logout" ,to: "authentication#destroy"
 

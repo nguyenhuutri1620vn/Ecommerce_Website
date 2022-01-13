@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   include ApplicationHelper
 
   def show
-      @cart = @current_cart
+    @cart = @current_cart
   end
 
   def destroy

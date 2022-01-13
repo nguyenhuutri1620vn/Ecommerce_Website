@@ -24,7 +24,7 @@
                                 <td><%= order.id%></td>
                                 <td><%= order.user.full_name%></td>
                                 <td><%= order.quantity%></td>
-                                <td><%= order.total_price%></td>
+                                <td><%= number_to_currency(order.total_price, unit: "vn₫",format: "%n %u")%></td>
                                 <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
                                 <td>Chưa Duyệt</td>
                                 <td><%= link_to 'Chi tiết', order , :class => 'btn btn-brand'%></td>
@@ -34,6 +34,9 @@
                     <% end %>
                 </tbody>
             </table>
+             <div class="digg_pagination float-right mt-3">
+                <%= will_paginate @orders  %>
+            </div>
         </div>
     </div>
 </div>

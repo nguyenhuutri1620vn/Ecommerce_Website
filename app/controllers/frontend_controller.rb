@@ -68,11 +68,28 @@ class FrontendController < ApplicationController
   end
 
   def orderhistory
-    @orders = Order.user(current_user.id)
+    @orders = Order.user(current_user.id).order('created_at DESC')
   end
 
   def orderdetail
-    @orderdetails = OrderDetail.detail(params[:id])
+    @orderdetails = OrderDetail.detail(params[:id]).order('created_at DESC')
+  end
+
+  def createorder
+    @order = Order.new(order_params)
+    @order.user_id = current_user.id
+    # @order.quantity = @order_detail.quantity
+    @order.total_price = @current_cart.sub_total
+    @order.status = 0
+    @order.quantity = @current_cart.sum_quan
+    @order.save
+    
+    session[:cart_id] = nil
+    redirect_to thankyou_path
+  end
+
+  def thankyou
+
   end
 
   private 
@@ -86,5 +103,9 @@ class FrontendController < ApplicationController
 
   def update_params
     params.require(:user).permit(:address, :phone, :full_name)
+  end
+
+  def order_params 
+    params.permit(:user_id, :quantity, :total_price)
   end
 end

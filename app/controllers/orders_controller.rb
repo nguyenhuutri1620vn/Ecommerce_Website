@@ -4,20 +4,20 @@ class OrdersController < ApplicationController
 	before_action :is_admin?
 	
 	def index
-		@orders = Order.list(1).paginate(:page => params[:page], :per_page => 10).order('created_at asc')
+		@orders = Order.list(1).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
 	end
 
 	def show		
-		@orders = OrderDetail.detail(params[:id]).paginate(:page => params[:page], :per_page => 10).order('created_at asc')		
+		@orders = OrderDetail.detail(params[:id]).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')		
 	end
 
 	def unapprove
-		@orders = Order.list(0).paginate(:page => params[:page], :per_page => 10).order('created_at asc')
+		@orders = Order.list(0).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')
 	end
 
 	def approve
 		Order.approve(params[:id])
-		@orders = OrderDetail.detail(params[:id]).paginate(:page => params[:page], :per_page => 10).order('created_at asc')		
+		@orders = OrderDetail.detail(params[:id]).paginate(:page => params[:page], :per_page => 10).order('created_at DESC')		
 	end
 
 	def new
