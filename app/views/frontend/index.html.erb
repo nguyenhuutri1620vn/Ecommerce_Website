@@ -21,9 +21,10 @@
          <div class='float-right'>
             <%= form_tag '/frontend', method: :get do %>
                 <%= text_field_tag "term", params[:term], placeholder: "Tìm kiếm..." %>
-                <%= submit_tag "Tìm kiếm" %>
+                <%= submit_tag "Tìm kiếm", class: 'btn btn-primary' %>
             <% end %>
         </div>  
+          
     </h2>
     <div class='row'>
         <div class='col-3'>
@@ -38,6 +39,10 @@
                     <%end%>
                 </div>
             </div>
+            <a href='/carts' class='btn btn-primary w-100'>
+                GIỎ HÀNG
+                <i class="fas fa-shopping-cart icon-cart"></i>
+            </a>
         </div>
         <div class='col'>
             <div class="row g-1">

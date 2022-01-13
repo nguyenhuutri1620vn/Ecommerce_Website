@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   layout 'frontend'
-
+  before_action :is_admin?
+  include ApplicationHelper
   def show
     @cart = @current_cart
   end

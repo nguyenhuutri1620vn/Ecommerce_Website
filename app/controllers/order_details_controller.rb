@@ -1,11 +1,8 @@
 class OrderDetailsController < ApplicationController
-    before_action :had_login
-    def had_login
-        if current_user.nil?
-            redirect_to login_path
-        end
-    end
-    def create
+  before_action :is_admin?
+  include ApplicationHelper
+
+  def create
         chosen_product = Product.find(params[:product_id])
         current_cart = @current_cart
         if current_cart.product.include?(chosen_product)

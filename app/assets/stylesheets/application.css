@@ -7045,3 +7045,19 @@ Media Query
 #navbarDropdownMenuLink2{
     margin-right: 100px;
 }
+.cart-btn-quantity{
+    width: 25px;
+    height: 20px;
+    text-align: center;
+    line-height: 3px;
+    font-size: 12pt;
+    align-items: center;
+    border-radius: 10%;
+    border: #171649 1px solid;
+    background: linear-gradient(#fff,#f7f7f7);
+    cursor: pointer;
+    box-shadow: #192d56;
+}
+.icon-cart{
+    font-size: 25px;
+}

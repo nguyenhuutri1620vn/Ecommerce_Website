@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   
   #cart
   get 'carts', to: "carts#show", as: "cart"
-  delete 'carts/:id', to: "carts#destroy"
+  delete 'carts', to: "carts#destroy"
 
   post 'order_details/:id/add', to: "order_details#add_quantity", as: "order_detail_add"
   post 'order_details/:id/reduce', to: "order_details#reduce_quantity", as: "order_detail_reduce"

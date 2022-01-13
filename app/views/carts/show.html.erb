@@ -21,7 +21,12 @@
             </tr>
             </thead>
             <tbody>
-        <% @cart.order_details.each do |f| %>
+            <% if @cart.order_details.length == 0 %>
+                <tr>
+                    <td colspan="6" class="text-center">Giỏ hàng trống</td>
+                </tr>
+            <% else %>
+            <% @cart.order_details.each do |f| %>
             <tr>
                 <td>
                     <%= image_tag f.product.image, alt: 'Image', class:'product-image'%>
@@ -30,11 +35,11 @@
                 <td><b><%= number_to_currency(f.product.price, unit: "₫",format: "%n %u")%></b></td>
                 <td> 
                     <div class="btn-group"> 
-                        <%= button_to "-", order_detail_reduce_path(:id => f),class: 'btn btn-light btn-sm', method: :post %>
+                        <%= button_to "-", order_detail_reduce_path(:id => f),class: 'cart-btn-quantity', method: :post %>
                             <span class="px-md-3 px-1">
                                 <%= f.quantity%>
                             </span>
-                         <%= button_to "+", order_detail_add_path(:id => f),class: 'btn btn-light btn-sm', method: :post %>
+                         <%= button_to "+", order_detail_add_path(:id => f),class: 'cart-btn-quantity', method: :post %>
                     </div>
                 </td>
                  <td><%= number_to_currency(f.total_price, unit:"₫",format: "%n %u")%></b></td>
@@ -42,6 +47,7 @@
                     <%= button_to "Xóa", order_detail_path(:id => f),class: 'btn btn-outline-danger btn-xs', method: :delete %>
                 </td>
             </tr>
+        <% end%>
         <% end%>
             </tbody>
         </table>
