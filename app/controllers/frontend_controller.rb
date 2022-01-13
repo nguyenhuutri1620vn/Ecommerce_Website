@@ -6,9 +6,9 @@ class FrontendController < ApplicationController
   def index
     @categories = Category.list(true)
     if params[:term]
-      @products = Product.search(params[:term]).paginate(page: params[:page], per_page: 20).list(true).order('created_at DESC')
+      @products = Product.search(params[:term]).paginate(page: params[:page], per_page: 18).list(true).order('created_at DESC')
     else
-        @products = Product.all.paginate(page: params[:page], per_page: 20).list(true).order('created_at DESC')
+        @products = Product.all.paginate(page: params[:page], per_page: 18).list(true).order('created_at DESC')
     end
   end
 
@@ -35,9 +35,9 @@ class FrontendController < ApplicationController
   def select_category
     @categories = Category.list(true)
     if params[:term]
-      @products = Product.search(params[:term]).paginate(page: params[:page], per_page: 20).selectcate(params[:id]).list(true).order('created_at DESC')
+      @products = Product.search(params[:term]).paginate(page: params[:page], per_page: 18).selectcate(params[:id]).list(true).order('created_at DESC')
     else
-        @products = Product.all.paginate(page: params[:page], per_page: 20).selectcate(params[:id]).list(true).order('created_at DESC')
+        @products = Product.all.paginate(page: params[:page], per_page: 18).selectcate(params[:id]).list(true).order('created_at DESC')
     end
   end
 
