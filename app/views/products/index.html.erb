@@ -32,7 +32,7 @@
                                 <td><%= product.category.name%></td>
                                 <td><%= link_to product.name, product_path(product.id) %></td>
                                 <td><%= product.quantity %></td>
-                                <td><%= product.price %></td>
+                                <td><%= number_to_currency(product.price, unit: "vn₫",format: "%n %u") %></td>
                                 <td><%= product.status === true ? 'Hiện': 'Ẩn'%></td>
                                 <td class="text-center"><%= link_to "Sửa",  edit_product_path(product.id), class: 'btn btn-brand'%></td>
                                 <td class="text-center"> <%= link_to "Xoá", product_path(product.id), method: :delete,

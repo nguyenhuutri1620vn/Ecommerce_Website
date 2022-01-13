@@ -27,7 +27,7 @@
                             <tr>
                                 <td><%= order.id%></td>
                                 <td><%= order.quantity%></td>
-                                <td><%= order.total_price%></td>
+                                <td><%= number_to_currency(order.total_price, unit: "vn₫",format: "%n %u")%></td>
                                 <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
                                 <td><%= order.status === 1 ? "Đã duyệt": "Chưa duyệt"%></td>
                                 <td><%= link_to 'Chi tiết', "/profile/orderdetail/#{order.id}" , :class=> 'btn btn-brand'%></td>

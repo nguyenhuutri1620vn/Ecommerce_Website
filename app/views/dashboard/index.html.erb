@@ -155,7 +155,7 @@
         <div class='card-body'>
             <p>TỔNG HƠN ĐƠN: <%= @orderday%></p>
             <p>TỔNG SẢN PHẨM: <%= @products_detail_sold.count %></p>
-            <p>TỔNG DOANH THU: <%= @order_total_money%> VND</p>
+            <p>TỔNG DOANH THU: <%=number_to_currency(@order_total_money, unit: "vn₫",format: "%n %u")%> </p>
             <p>CÁC SẢN PHẨM ĐÃ BÁN: </p>
             <table class='table table-hover'>
                 <thead>

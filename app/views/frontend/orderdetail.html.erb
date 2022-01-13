@@ -27,7 +27,7 @@
                         <td><%= order.product_id%></td>
                         <td><%= order.product.name%></td>
                         <td><%= order.quantity%></td>
-                        <td><%= order.price%></td>
+                        <td><%= number_to_currency(order.price, unit: "vn₫",format: "%n %u")%></td>
                     </tr>
                 <% end %>
             </tbody>

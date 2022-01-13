@@ -2,8 +2,8 @@
 <h4>Chi tiết sản phẩm <%= @product.name %>
 </h4>
 <p>Số lượng: <%= @product.quantity %></p>
-<p>Giá: <%= @product.price %></p>
-<p>Giá đã giảm: <%= @product.sell_price %></p>
+<p>Giá: <%= number_to_currency(@product.price, unit: "vn₫",format: "%n %u") %></p>
+<p>Giá đã giảm: <%= number_to_currency(@product.sell_price, unit: "vn₫",format: "%n %u") %></p>
 <p>Mô tả: <%= @product.description %></p>
 <p>Hình ảnh: </p>
 <% if @product.image.attached? %>

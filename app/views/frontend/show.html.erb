@@ -8,10 +8,10 @@
       <% days_str = (@product.discount.starts_at.to_date..@product.discount.ends_at.to_date).map{ |date| date.strftime("%Y-%m-%d") == Date.today.strftime("%Y-%m-%d")}%>
       <% sell_day = days_str.detect{|e| e == true}  %>
       <% if sell_day == true %>
-        <h3 class='lineThrough'>Giá: <%= @product.price %></h3>
-        <h3 class='text-danger'>Giá đã giảm: <%= @product.sell_price %></h3>
+        <h3 class='lineThrough'>Giá: <%= number_to_currency(@product.price, unit: "vn₫",format: "%n %u")  %></h3>
+        <h3 class='text-danger'>Giá đã giảm: <%= number_to_currency(@product.sell_price, unit: "vn₫",format: "%n %u")  %></h3>
       <% else %>
-        <h3 class='text-danger'>Giá: <%= @product.price %></h3>
+        <h3 class='text-danger'>Giá: <%= number_to_currency(@product.price, unit: "vn₫",format: "%n %u")  %></h3>
       <% end %>
       <h3>Mô tả:</h3>
       <h4><%= @product.description %></h4>

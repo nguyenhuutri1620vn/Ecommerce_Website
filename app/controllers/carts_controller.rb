@@ -1,9 +1,10 @@
 class CartsController < ApplicationController
   layout 'frontend'
-  before_action :is_admin?
+  before_action :must_login
   include ApplicationHelper
+
   def show
-    @cart = @current_cart
+      @cart = @current_cart
   end
 
   def destroy

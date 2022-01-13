@@ -59,12 +59,12 @@
                                 <% days_str = (product.discount.starts_at.to_date..product.discount.ends_at.to_date).map{ |date| date.strftime("%Y-%m-%d") == Date.today.strftime("%Y-%m-%d")}%>
                                 <% sell_day = days_str.detect{|e| e == true}  %>
                                 <% if sell_day == true %>
-                                    <div class="product-details"> <span class="font-weight-bold d-block lineThrough"><%= product.price %> VND</span>
+                                    <div class="product-details"> <span class="font-weight-bold d-block lineThrough"><%= number_to_currency(product.price, unit: "vn₫",format: "%n %u") %> VND</span>
                                     <div>Sale từ <p v class='text-secondary'><%= product.discount.starts_at.strftime('%d/%m/%Y')%> - <%= product.discount.ends_at.strftime('%d/%m/%Y')%></p></div>
-                                    <span class="font-weight-bold d-block text-danger">Chỉ còn: <%= product.sell_price %> VND</span>
+                                    <span class="font-weight-bold d-block text-danger">Chỉ còn: <%= number_to_currency(product.sell_price, unit: "vn₫",format: "%n %u") %> </span>
                                 <% else %>
                                 
-                                <div class="product-details"> <span class="font-weight-bold d-block"><%= product.price %> VND</span>
+                                <div class="product-details"> <span class="font-weight-bold d-block"><%= number_to_currency(product.price, unit: "vn₫",format: "%n %u") %></span>
                                 <% end %>
                                 <span><%= product.name %></span>
                                    

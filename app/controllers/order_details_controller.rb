@@ -1,5 +1,5 @@
 class OrderDetailsController < ApplicationController
-  before_action :is_admin?
+  before_action :must_login
   include ApplicationHelper
 
   def create
@@ -24,15 +24,19 @@ class OrderDetailsController < ApplicationController
         @order_detail.destroy
         redirect_to cart_path
       end  
-      def add_quantity
+    def add_quantity
         @order_detail = OrderDetail.find(params[:id])
-        @order_detail.quantity += 1
+        if @order_detail.quantity <= @order_detail.product.quantity
+          @order_detail.quantity += 1
+        else
+          @order_detail.quantity == @order_detail.product.quantity
+        end
         @order_detail.price = @order_detail.quantity * @order_detail.product.price
         @order_detail.save
         redirect_to cart_path
-      end
+    end
       
-      def reduce_quantity
+    def reduce_quantity
         @order_detail = OrderDetail.find(params[:id])
         if @order_detail.quantity > 1
           @order_detail.quantity -= 1
@@ -40,7 +44,7 @@ class OrderDetailsController < ApplicationController
         @order_detail.price = @order_detail.quantity * @order_detail.product.price
         @order_detail.save
         redirect_to cart_path
-      end
+    end
 
     private
     def order_detail_params 

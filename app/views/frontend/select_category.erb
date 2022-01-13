@@ -21,7 +21,12 @@
                         <a href="/categories/<%= category.id %>" ><h5 class='my-2'> <%= category.name %></h5></a>
                     <%end%>
                 </div>
+                
             </div>
+            <a href='/carts' class='btn btn-primary w-100'>
+                GIỎ HÀNG
+                <i class="fas fa-shopping-cart icon-cart"></i>
+            </a>
         </div>
         <div class='col'>
             <div class="row g-1">
@@ -34,10 +39,10 @@
                             <div class="card p-3 card-product">
                                 <div class="text-center"> <%= image_tag product.image, alt: 'Image', class:'product-image'%></div>
                                 <% unless product.sell_price.nil?%>
-                                    <div class="product-details"> <span class="font-weight-bold d-block lineThrough"><%= product.price %> VND</span>
-                                    <span class="font-weight-bold d-block text-danger">Chỉ còn: <%= product.sell_price %> VND</span>
+                                    <div class="product-details"> <span class="font-weight-bold d-block lineThrough"><%= number_to_currency(product.price, unit: "vn₫",format: "%n %u") %> VND</span>
+                                    <span class="font-weight-bold d-block text-danger">Chỉ còn: <%= number_to_currency(product.sell_price, unit: "vn₫",format: "%n %u") %> VND</span>
                                 <% else %>
-                                <div class="product-details"> <span class="font-weight-bold d-block"><%= product.price %> VND</span>
+                                <div class="product-details"> <span class="font-weight-bold d-block"><%= number_to_currency(product.price, unit: "vn₫",format: "%n %u") %> VND</span>
                                 <% end %>
                                 <span><%= product.name %></span>
                                     <div class="buttons d-flex flex-row">

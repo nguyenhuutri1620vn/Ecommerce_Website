@@ -14,4 +14,10 @@ module ApplicationHelper
             redirect_to frontend_index_path
         end
     end 
+
+    def must_login
+        if current_user.nil?
+            redirect_to login_path
+        end
+    end
 end
